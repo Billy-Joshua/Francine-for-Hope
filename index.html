@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Francine for Hope</title>
+  <link rel="icon" type="image/jpeg" href="image/LOG.jpg">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
+  <header class="header">
+    <h1>Francine for Hope</h1>
+    <nav>
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">Cancer Types</a>
+          <div class="dropdown-content">
+            <a href="#breast-cancer">Breast Cancer</a>
+            <a href="#lung-cancer">Lung Cancer</a>
+            <a href="#colon-cancer">Colon Cancer</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <h2>Building a Future of Hope</h2>
+    <p>This project is a mission to support those affected by cancer. Born from personal experiences of pain and loss, we are committed to creating a meaningful impact for cancer patients and their families.</p>
+  </section>
+
+  <section id="resources" class="resources">
+    <h2>Cancer Resources</h2>
+    <div class="resource-grid">
+      <div class="resource-card">
+        <h3>Breast Cancer</h3>
+        <p>Learn about early detection, treatment options, and support networks for breast cancer patients.</p>
+        <a href="#breast-cancer">Read More</a>
+      </div>
+      <div class="resource-card">
+        <h3>Lung Cancer</h3>
+        <p>Understand the causes, prevention strategies, and latest treatments for lung cancer.</p>
+        <a href="#lung-cancer">Read More</a>
+      </div>
+      <div class="resource-card">
+        <h3>Colon Cancer</h3>
+        <p>Discover the importance of screening and how to reduce the risk of colon cancer.</p>
+        <a href="#colon-cancer">Read More</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="symptom-checker" class="symptom-checker">
+    <h2>Symptom Checker</h2>
+    <p>Select any symptoms you are experiencing:</p>
+    <form action="/submit_symptoms.php" method="post">
+      <input type="checkbox" id="symptom1" name="symptoms[]" value="Fatigue">
+      <label for="symptom1">Fatigue</label><br>
+      <input type="checkbox" id="symptom2" name="symptoms[]" value="WeightLoss">
+      <label for="symptom2">Unexplained Weight Loss</label><br>
+      <input type="checkbox" id="symptom3" name="symptoms[]" value="Pain">
+      <label for="symptom3">Persistent Pain</label><br>
+      <input type="checkbox" id="symptom4" name="symptoms[]" value="Lump">
+      <label for="symptom4">Lump or Swelling</label><br>
+      <input type="checkbox" id="symptom5" name="symptoms[]" value="Bleeding">
+      <label for="symptom5">Unusual Bleeding or Discharge</label><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form action="/submit_contact.php" method="post">
+      <label for="fname">First Name:</label><br>
+      <input type="text" id="fname" name="fname" required><br>
+      <label for="lname">Last Name:</label><br>
+      <input type="text" id="lname" name="lname" required><br>
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br>
+      <label for="message">Message:</label><br>
+      <textarea id="message" name="message" rows="5" cols="30"></textarea><br><br>
+      <input type="submit" value="Send Message">
+    </form>
+  </section>
+
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>Our mission is to provide hope, resources, and support to cancer patients and their families. Inspired by personal loss, we aim to make a difference through education, awareness, and technology.</p>
+    <p>Connect with us:</p>
+    <ul>
+      <li><a href="https://www.instagram.com/_.billy99/" target="_blank">Instagram</a></li>
+      <li><a href="https://www.linkedin.com/in/ishimwe-billy-joshua-ba4195288/" target="_blank">LinkedIn</a></li>
+      <li><a href="https://github.com/Billy-Joshua" target="_blank">GitHub</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Powered by <a href="https://www.linkedin.com/in/ishimwe-billy-joshua-ba4195288/" target="_blank">Billy-Joshua</a></p>
+    <p>Stay informed. Get regular checkups. Fight cancer together.</p>
+  </footer>
+</body>
+</html>
