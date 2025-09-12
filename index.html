@@ -6,7 +6,6 @@
   <title>Francine for Hope</title>
   <link rel="icon" type="image/jpeg" href="image/LOG.jpg">
   <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
 </head>
 <body>
   <header class="header">
@@ -15,23 +14,19 @@
       <ul>
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#resources">Resources</a></li>
+        <li><a href="#donate">Donate</a></li>
+        <li><a href="#apply">Apply for Support</a></li>
+        <li><a href="#portal">Patient Portal</a></li>
+        <li><a href="#hospital">Hospital/Admin</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#about">About</a></li>
-        <li class="dropdown">
-          <a href="javascript:void(0)" class="dropbtn">Cancer Types</a>
-          <div class="dropdown-content">
-            <a href="#breast-cancer">Breast Cancer</a>
-            <a href="#lung-cancer">Lung Cancer</a>
-            <a href="#colon-cancer">Colon Cancer</a>
-          </div>
-        </li>
       </ul>
     </nav>
   </header>
 
   <section id="home" class="hero">
     <h2>Building a Future of Hope</h2>
-    <p>This project is a mission to support those affected by cancer. Born from personal experiences of pain and loss, we are committed to creating a meaningful impact for cancer patients and their families.</p>
+    <p>This project is a mission to support those affected by cancer. Born from personal experiences of pain and loss, we are committed to creating a meaningful impact for cancer patients and their families in Rwanda and beyond.</p>
   </section>
 
   <section id="resources" class="resources">
@@ -39,53 +34,77 @@
     <div class="resource-grid">
       <div class="resource-card">
         <h3>Breast Cancer</h3>
-        <p>Learn about early detection, treatment options, and support networks for breast cancer patients.</p>
-        <a href="#breast-cancer">Read More</a>
+        <p>Learn about early detection, treatment options, and support networks.</p>
       </div>
       <div class="resource-card">
         <h3>Lung Cancer</h3>
-        <p>Understand the causes, prevention strategies, and latest treatments for lung cancer.</p>
-        <a href="#lung-cancer">Read More</a>
+        <p>Understand the causes, prevention strategies, and latest treatments.</p>
       </div>
       <div class="resource-card">
         <h3>Colon Cancer</h3>
-        <p>Discover the importance of screening and how to reduce the risk of colon cancer.</p>
-        <a href="#colon-cancer">Read More</a>
+        <p>Discover the importance of screening and reducing risk factors.</p>
       </div>
     </div>
   </section>
 
-  <section id="symptom-checker" class="symptom-checker">
-    <h2>Symptom Checker</h2>
-    <p>Select any symptoms you are experiencing:</p>
-    <form action="/submit_symptoms.php" method="post">
-      <input type="checkbox" id="symptom1" name="symptoms[]" value="Fatigue">
-      <label for="symptom1">Fatigue</label><br>
-      <input type="checkbox" id="symptom2" name="symptoms[]" value="WeightLoss">
-      <label for="symptom2">Unexplained Weight Loss</label><br>
-      <input type="checkbox" id="symptom3" name="symptoms[]" value="Pain">
-      <label for="symptom3">Persistent Pain</label><br>
-      <input type="checkbox" id="symptom4" name="symptoms[]" value="Lump">
-      <label for="symptom4">Lump or Swelling</label><br>
-      <input type="checkbox" id="symptom5" name="symptoms[]" value="Bleeding">
-      <label for="symptom5">Unusual Bleeding or Discharge</label><br><br>
-      <input type="submit" value="Submit">
+  <section id="donate" class="donate">
+    <h2>Support with a Donation</h2>
+    <p>Your contribution helps provide food, transport, and medical support for patients at Butaro Cancer Center and Rwanda Cancer Center.</p>
+    <label for="donationAmount">Donation Amount (RWF):</label>
+    <input type="number" id="donationAmount" min="1000" placeholder="Enter amount">
+    <button onclick="makeDonation()">Donate</button>
+    <div id="donationProgress">
+      <div id="progressBar"></div>
+    </div>
+    <p id="donationStatus"></p>
+  </section>
+
+  <section id="apply" class="apply">
+    <h2>Apply for Free Support</h2>
+    <form id="applyForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" required>
+      <label for="phone">Phone Number:</label>
+      <input type="text" id="phone" required>
+      <label for="needs">What support do you need?</label>
+      <textarea id="needs" required></textarea>
+      <button type="submit">Submit Application</button>
     </form>
+    <p id="applyStatus"></p>
+  </section>
+
+  <section id="portal" class="portal">
+    <h2>Patient Portal</h2>
+    <label for="portalPhone">Enter your phone number:</label>
+    <input type="text" id="portalPhone">
+    <button onclick="checkApplication()">Check My Application</button>
+    <div id="portalResult"></div>
+  </section>
+
+  <section id="hospital" class="hospital">
+    <h2>Hospital / Admin Portal</h2>
+    <p>For staff at Butaro Hospital and Rwanda Cancer Center.</p>
+    <label for="adminPassword">Password:</label>
+    <input type="password" id="adminPassword">
+    <button onclick="adminLogin()">Login</button>
+    <div id="adminPanel" style="display:none;">
+      <h3>Chemo Schedule Manager</h3>
+      <form id="scheduleForm">
+        <label for="patientName">Patient Name:</label>
+        <input type="text" id="patientName" required>
+        <label for="chemoDate">Chemotherapy Date:</label>
+        <input type="date" id="chemoDate" required>
+        <button type="submit">Add Schedule</button>
+      </form>
+      <ul id="scheduleList"></ul>
+    </div>
   </section>
 
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
-    <form action="/submit_contact.php" method="post">
-      <label for="fname">First Name:</label><br>
-      <input type="text" id="fname" name="fname" required><br>
-      <label for="lname">Last Name:</label><br>
-      <input type="text" id="lname" name="lname" required><br>
-      <label for="email">Email:</label><br>
-      <input type="email" id="email" name="email" required><br>
-      <label for="message">Message:</label><br>
-      <textarea id="message" name="message" rows="5" cols="30"></textarea><br><br>
-      <input type="submit" value="Send Message">
-    </form>
+    <p>Email: info@francineforhope.rw</p>
+    <p>Phone: +250 788846522</p>
+    <p>Location: Kigali, Rwanda</p>
   </section>
 
   <section id="about" class="about">
@@ -95,7 +114,6 @@
     <ul>
       <li><a href="https://www.instagram.com/_.billy99/" target="_blank">Instagram</a></li>
       <li><a href="https://www.linkedin.com/in/ishimwe-billy-joshua-ba4195288/" target="_blank">LinkedIn</a></li>
-      <li><a href="https://github.com/Billy-Joshua" target="_blank">GitHub</a></li>
     </ul>
   </section>
 
@@ -103,5 +121,7 @@
     <p>Powered by <a href="https://www.linkedin.com/in/ishimwe-billy-joshua-ba4195288/" target="_blank">Billy-Joshua</a></p>
     <p>Stay informed. Get regular checkups. Fight cancer together.</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
