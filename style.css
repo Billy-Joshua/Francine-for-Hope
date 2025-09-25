@@ -138,5 +138,39 @@ button, input[type="submit"], a {
 button:hover, input[type="submit"]:hover, a:hover {
     transform: scale(1.05);
 }
+.patient-tracker {
+  padding: 20px;
+  background: #fff;
+  margin: 20px auto;
+  border-radius: 8px;
+  max-width: 800px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 
+.patient-tracker h2 {
+  text-align: center;
+  color: #04AA6D;
+}
+
+#patientForm input, #patientForm select, #patientForm textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+#patientList .patient {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  margin-top: 8px;
+  border-radius: 5px;
+}
+
+#stats {
+  margin-top: 15px;
+  font-weight: bold;
+  text-align: center;
+}
 

@@ -99,6 +99,50 @@
       <ul id="scheduleList"></ul>
     </div>
   </section>
+<section class="patient-tracker" id="patients">
+  <h2>📊 Cancer Patient Tracker</h2>
+  <p>Manage and monitor patient records securely and transparently.</p>
+
+  <form id="patientForm">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="number" id="age" placeholder="Age">
+    <input type="text" id="diagnosis" placeholder="Diagnosis">
+    <input type="text" id="stage" placeholder="Stage">
+    <select id="risk">
+      <option value="">Select Risk Level</option>
+      <option>Low</option>
+      <option>Moderate</option>
+      <option>High</option>
+    </select>
+    <textarea id="notes" placeholder="Notes"></textarea>
+    <input type="submit" value="Add Patient" class="btn">
+  </form>
+
+  <div class="controls">
+    <input type="text" id="searchName" placeholder="Search by name">
+    <select id="filterRisk">
+      <option value="">Filter by Risk</option>
+      <option>Low</option>
+      <option>Moderate</option>
+      <option>High</option>
+    </select>
+    <select id="sortBy">
+      <option value="">Sort by</option>
+      <option value="ageAsc">Age ↑</option>
+      <option value="ageDesc">Age ↓</option>
+      <option value="nameAsc">Name A–Z</option>
+      <option value="nameDesc">Name Z–A</option>
+    </select>
+    <button id="seed">Load Samples</button>
+    <button id="clearAll">Clear All</button>
+    <button id="exportBtn">Export</button>
+    <button id="importBtn">Import</button>
+    <input type="file" id="importJSON" hidden>
+  </div>
+
+  <div id="patientList"></div>
+  <div id="stats"></div>
+</section>
 
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
@@ -121,7 +165,7 @@
     <p>Powered by <a href="https://www.linkedin.com/in/ishimwe-billy-joshua-ba4195288/" target="_blank">Billy-Joshua</a></p>
     <p>Stay informed. Get regular checkups. Fight cancer together.</p>
   </footer>
-
-  <script src="script.js"></script>
+<script src="tracker.js"></script>
+ <script src="script.js"></script>
 </body>
 </html>
