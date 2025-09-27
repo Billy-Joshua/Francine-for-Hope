@@ -179,4 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-}); // end of DOMContentLoaded
+}); 
+// =========================
+// End of script.js
+// =========================

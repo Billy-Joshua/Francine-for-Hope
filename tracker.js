@@ -170,3 +170,10 @@ function escapeHtml(s) {
 window.removePatient = removePatient;
 window.edit = edit;
 saveToStorage();
+render();
+// End of tracker.js
+let patients1 = loadFromStorage() || [];
+let patients2 = loadFromStorage() || [];
+let patients3 = loadFromStorage() || [];
+
+
