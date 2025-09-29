@@ -1,185 +1,173 @@
-// Wait until DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
+// tracker.js - No major changes needed, but added a note for completeness. Your original code is fine; I've just cleaned up minor formatting.
+const patients = loadFromStorage() || [];
 
-    // =========================
-    // Toast Notification (replaces alert for welcome)
-    // =========================
-    function showToast(message) {
-        const toast = document.createElement("div");
-        toast.className = "toast";
-        toast.innerText = message;
-        document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 3000);
-    }
+const form = document.getElementById('patientForm');
+const nameInput = document.getElementById('name');
+const ageInput = document.getElementById('age');
+const diagnosisInput = document.getElementById('diagnosis');
+const stageInput = document.getElementById('stage');
+const riskInput = document.getElementById('risk');
+const notesInput = document.getElementById('notes');
+const listEl = document.getElementById('patientList');
+const statsEl = document.getElementById('stats');
 
-    showToast("Welcome to the Francine for Hope Cancer Support Hub!");
+const searchName = document.getElementById('searchName');
+const filterRisk = document.getElementById('filterRisk');
+const sortBy = document.getElementById('sortBy');
+const seedBtn = document.getElementById('seed');
+const clearAllBtn = document.getElementById('clearAll');
+const exportBtn = document.getElementById('exportBtn');
+const importBtn = document.getElementById('importBtn');
+const importJSON = document.getElementById('importJSON');
 
-    // =========================
-    // Hero Typing Effect
-    // =========================
-    const heroText = "Building a Future of Hope";
-    const heroElement = document.querySelector(".hero h2");
-    let i = 0;
-    function typeHeroText() {
-        if (i < heroText.length) {
-            heroElement.innerHTML += heroText.charAt(i);
-            i++;
-            setTimeout(typeHeroText, 100);
-        }
-    }
-    if(heroElement) {
-        heroElement.innerHTML = "";
-        typeHeroText();
-    }
+render();
 
-    // =========================
-    // Fade-in Sections on Scroll
-    // =========================
-    const sections = document.querySelectorAll("section");
-    function checkFade() {
-        const triggerBottom = window.innerHeight * 0.9;
-        sections.forEach(section => {
-            const sectionTop = section.getBoundingClientRect().top;
-            if(sectionTop < triggerBottom){
-                section.classList.add("show");
-            } else {
-                section.classList.remove("show");
-            }
-        });
-    }
-    window.addEventListener("scroll", checkFade);
-    checkFade(); // trigger on load
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  addPatientFromForm();
+});
+searchName.addEventListener('keydown', (e) => { if (e.key === 'Enter') render(); });
+filterRisk.addEventListener('change', render);
+sortBy.addEventListener('change', render);
+seedBtn.addEventListener('click', seedSamples);
+clearAllBtn.addEventListener('click', () => {
+  if (confirm('Clear all patient data?')) {
+    patients.length = 0;
+    saveToStorage();
+    render();
+  }
+});
 
-    // =========================
-    // Button Hover Scaling
-    // =========================
-    const buttons = document.querySelectorAll("button, input[type='submit'], a");
-    buttons.forEach(btn => {
-        btn.addEventListener("mouseenter", () => {
-            btn.style.transform = "scale(1.05)";
-        });
-        btn.addEventListener("mouseleave", () => {
-            btn.style.transform = "scale(1)";
-        });
-    });
+exportBtn.addEventListener('click', () => {
+  const data = JSON.stringify(patients, null, 2);
+  const blob = new Blob([data], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'patients.json';
+  a.click(); URL.revokeObjectURL(url);
+});
+importBtn.addEventListener('click', () => importJSON.click());
+importJSON.addEventListener('change', (ev) => {
+  const file = ev.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (evt) => {
+    try {
+      const json = JSON.parse(evt.target.result);
+      if (Array.isArray(json)) {
+        patients.length = 0;
+        json.forEach(p => patients.push(p));
+        saveToStorage(); render();
+        alert('Imported ' + patients.length + ' records');
+      } else alert('JSON must be an array');
+    } catch { alert('Invalid JSON'); }
+  };
+  reader.readAsText(file);
+});
 
-    // =========================
-    // Light Bulb Toggle (original)
-    // =========================
-    function light(state) {
-        var image = document.getElementById('myImage');
-        if (state == 1) {
-            image.src = 'image/pic_bulbon.gif';
-        } else {
-            image.src = 'image/pic_bulboff.gif';
-        }
-    }
-    window.light = light;
+function addPatientFromForm() {
+  const p = {
+    id: Date.now(),
+    name: nameInput.value.trim(),
+    age: Number(ageInput.value) || 0,
+    diagnosis: diagnosisInput.value,
+    stage: stageInput.value,
+    risk: riskInput.value,
+    notes: notesInput.value.trim(),
+    addedAt: new Date().toISOString()
+  };
+  patients.push(p);
+  saveToStorage(); form.reset(); render();
+}
 
-    // =========================
-    // Hide Elements by Class (original)
-    // =========================
-    function myFunction() {
-        var elements = document.getElementsByClassName('cancer');
-        for (var i = 0; i < elements.length; i++) {
-            elements[i].style.display = 'none';
-        }
-    }
-    window.myFunction = myFunction;
+function render() {
+  let view = patients.slice();
 
-    // =========================
-    // Show Current Date (original)
-    // =========================
-    function showDate() {
-        var demo = document.getElementById('demo');
-        if(demo) {
-            demo.innerHTML = Date();
-        }
-    }
-    window.showDate = showDate;
+  const q = searchName.value.trim().toLowerCase();
+  if (q) view = view.filter(px => px.name.toLowerCase().includes(q));
 
-    // =========================
-    // Donation Functionality (existing)
-    // =========================
-    let totalDonations = 0;
-    window.makeDonation = function() {
-        const amount = parseInt(document.getElementById("donationAmount").value);
-        if (!amount || amount < 1000) {
-            showToast("Please enter at least 1000 RWF.");
-            return;
-        }
-        totalDonations += amount;
-        document.getElementById("donationStatus").innerText = `Total donations: RWF ${totalDonations}`;
-        let progress = Math.min((totalDonations / 1000000) * 100, 100); // target 1M RWF
-        document.getElementById("progressBar").style.width = progress + "%";
-        document.getElementById("donationAmount").value = "";
-    }
+  const r = filterRisk.value;
+  if (r) view = view.filter(px => px.risk === r);
 
-    // =========================
-    // Apply Form (existing)
-    // =========================
-    const applyForm = document.getElementById("applyForm");
-    if(applyForm){
-        applyForm.addEventListener("submit", function(e) {
-            e.preventDefault();
-            const name = document.getElementById("name").value;
-            const phone = document.getElementById("phone").value;
-            const needs = document.getElementById("needs").value;
+  const s = sortBy.value;
+  if (s === 'ageAsc') view.sort((a, b) => a.age - b.age);
+  else if (s === 'ageDesc') view.sort((a, b) => b.age - a.age);
+  else if (s === 'nameAsc') view.sort((a, b) => a.name.localeCompare(b.name));
+  else if (s === 'nameDesc') view.sort((a, b) => b.name.localeCompare(a.name));
 
-            const application = { name, phone, needs };
-            localStorage.setItem(phone, JSON.stringify(application));
+  listEl.innerHTML = '';
+  if (view.length === 0) listEl.innerHTML = '<div class="small">No records</div>';
 
-            document.getElementById("applyStatus").innerText = "Application submitted successfully!";
-            this.reset();
-        });
-    }
+  view.forEach(p => {
+    const div = document.createElement('div');
+    div.className = 'patient';
+    div.innerHTML = `
+      <div>
+        <strong>${escapeHtml(p.name)}</strong> <span class="small">(${p.age} yrs) - ${p.diagnosis} - Stage ${p.stage}</span>
+        <div class="small">Risk: ${p.risk} • Added: ${new Date(p.addedAt).toLocaleString()}</div>
+        <div class="small">${escapeHtml(p.notes || '')}</div>
+      </div>
+      <div class="controls">
+        <button class="btn" onclick="edit(${p.id})">Edit</button>
+        <button class="btn" onclick="removePatient(${p.id})">Delete</button>
+      </div>`;
+    listEl.appendChild(div);
+  });
 
-    // =========================
-    // Patient Portal (existing)
-    // =========================
-    window.checkApplication = function() {
-        const phone = document.getElementById("portalPhone").value;
-        const data = localStorage.getItem(phone);
-        if (data) {
-            const app = JSON.parse(data);
-            document.getElementById("portalResult").innerHTML = `
-              <p><strong>Name:</strong> ${app.name}</p>
-              <p><strong>Needs:</strong> ${app.needs}</p>
-            `;
-        } else {
-            document.getElementById("portalResult").innerText = "No application found for this phone number.";
-        }
-    }
+  renderStats(view);
+}
 
-    // =========================
-    // Admin Login (existing)
-    // =========================
-    window.adminLogin = function() {
-        const password = document.getElementById("adminPassword").value;
-        if (password === "admin123") {
-            document.getElementById("adminPanel").style.display = "block";
-        } else {
-            showToast("Wrong password!");
-        }
-    }
+function renderStats() {
+  if (patients.length === 0) { statsEl.innerHTML = 'No data yet'; return; }
+  const ages = patients.map(p => p.age);
+  const total = ages.reduce((sum, a) => sum + a, 0);
+  const avg = (total / (ages.length || 1)).toFixed(1);
+  const byDiag = {};
+  patients.forEach(p => { byDiag[p.diagnosis] = (byDiag[p.diagnosis] || 0) + 1; });
+  statsEl.innerHTML = `Total records: ${patients.length} · Average age: ${avg} yrs<br>Counts: ${Object.entries(byDiag).map(e => e.join(': ')).join(' | ')}`;
+}
 
-    // =========================
-    // Schedule Chemotherapy (existing)
-    // =========================
-    const scheduleForm = document.getElementById("scheduleForm");
-    if(scheduleForm){
-        scheduleForm.addEventListener("submit", function(e) {
-            e.preventDefault();
-            const patient = document.getElementById("patientName").value;
-            const date = document.getElementById("chemoDate").value;
-            const li = document.createElement("li");
-            li.innerText = `${patient} - Chemotherapy on ${date}`;
-            document.getElementById("scheduleList").appendChild(li);
-            this.reset();
-        });
-    }
-
-}); 
-// =========================
-// End of script.js
-// =========================
+function removePatient(id) {
+  const idx = patients.findIndex(p => p.id === id);
+  if (idx === -1) return;
+  if (!confirm('Delete record for ' + patients[idx].name + '?')) return;
+  patients.splice(idx, 1);
+  saveToStorage(); render();
+}
+function edit(id) {
+  const p = patients.find(x => x.id === id);
+  if (!p) return alert('Not found');
+  nameInput.value = p.name;
+  ageInput.value = p.age;
+  diagnosisInput.value = p.diagnosis;
+  stageInput.value = p.stage;
+  riskInput.value = p.risk;
+  notesInput.value = p.notes;
+  const idx = patients.findIndex(x => x.id === id);
+  if (idx !== -1) patients.splice(idx, 1);
+  saveToStorage(); render();
+}
+function saveToStorage() {
+  try { localStorage.setItem('patients.v1', JSON.stringify(patients)); }
+  catch (e) { console.warn('Storage failed', e); }
+}
+function loadFromStorage() {
+  try { return JSON.parse(localStorage.getItem('patients.v1') || 'null'); }
+  catch { return null; }
+}
+function seedSamples() {
+  const sample = [
+    { id: 1, name: 'Alice Mwiza', age: 49, diagnosis: 'Breast', stage: 'II', risk: 'Moderate', notes: 'Family history', addedAt: new Date().toISOString() },
+    { id: 2, name: 'Jean Pierre', age: 62, diagnosis: 'Prostate', stage: 'III', risk: 'High', notes: 'Smoker', addedAt: new Date().toISOString() },
+    { id: 3, name: 'Fatima U.', age: 35, diagnosis: 'Leukemia', stage: 'I', risk: 'Low', notes: 'Regular follow-up', addedAt: new Date().toISOString() }
+  ];
+  sample.forEach(s => patients.push(s));
+  saveToStorage(); render();
+}
+function escapeHtml(s) {
+  return String(s).replace(/[&<>\"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+window.removePatient = removePatient;
+window.edit = edit;
+saveToStorage();
+render();

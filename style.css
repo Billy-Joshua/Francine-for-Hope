@@ -1,8 +1,10 @@
+/* style.css - Updated for professional look: better fonts, spacing, shadows, image styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif; /* Changed to Roboto for modern, professional feel */
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
+  line-height: 1.6; /* Improved readability */
 }
 
 .header {
@@ -10,6 +12,7 @@ body {
   color: white;
   text-align: center;
   padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Added subtle shadow for depth */
 }
 
 nav ul {
@@ -30,6 +33,7 @@ nav ul li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  transition: background-color 0.3s; /* Smooth hover transition */
 }
 
 nav ul li a:hover {
@@ -40,14 +44,24 @@ nav ul li a:hover {
   text-align: center;
   padding: 50px 20px;
   background-color: #e9ecef;
+  position: relative; /* For overlay if needed */
 }
 
-.resources, .donate, .apply, .portal, .hospital, .contact, .about {
-  padding: 20px;
-  margin: 20px;
+.hero-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border-radius: 8px; /* Rounded corners for modern look */
+}
+
+.resources, .donate, .apply, .portal, .hospital, .contact, .about, .patient-tracker {
+  padding: 30px; /* Increased padding for better spacing */
+  margin: 20px auto;
   background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 10px; /* Softer corners */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Deeper shadow for professionalism */
+  max-width: 1200px; /* Centered content for wide screens */
 }
 
 .resource-grid {
@@ -59,29 +73,52 @@ nav ul li a:hover {
 .resource-card {
   background-color: #f9f9f9;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   text-align: center;
+  transition: transform 0.3s; /* Hover effect */
+}
+
+.resource-card:hover {
+  transform: translateY(-5px); /* Lift on hover for interactivity */
+}
+
+.resource-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.section-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border-radius: 8px;
 }
 
 button {
-  padding: 10px;
+  padding: 12px 20px; /* Larger buttons for better touch */
   background-color: #04AA6D;
   color: white;
   border: none;
   cursor: pointer;
   margin-top: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
   background-color: #037a4d;
+  transform: scale(1.05);
 }
 
-input, textarea {
+input, textarea, select {
   padding: 10px;
   margin: 5px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
+  font-family: 'Roboto', sans-serif;
 }
 
 #donationProgress {
@@ -96,6 +133,7 @@ input, textarea {
   height: 20px;
   background-color: #04AA6D;
   border-radius: 4px;
+  transition: width 0.5s; /* Smooth progress animation */
 }
 
 footer {
@@ -105,102 +143,54 @@ footer {
   padding: 20px;
   margin-top: 20px;
 }
+
 /* Fade-in for sections */
 section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease-out;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
 }
 section.show {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Toast notifications */
 .toast {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    z-index: 1000;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1000;
+  font-size: 14px;
 }
 
-/* Button hover effect */
-button, input[type="submit"], a {
-    transition: transform 0.2s ease, background-color 0.2s ease;
-}
-button:hover, input[type="submit"]:hover, a:hover {
-    transform: scale(1.05);
-}
+/* Patient Tracker Styles (enhanced) */
 .patient-tracker {
-  padding: 20px;
-  background: #fff;
-  margin: 20px auto;
-  border-radius: 8px;
-  max-width: 800px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 900px;
 }
 
-.patient-tracker h2 {
-  text-align: center;
-  color: #04AA6D;
-}
-
-#patientForm input, #patientForm select, #patientForm textarea {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 8px;
-}
-
-#patientList .patient {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  background: #f9f9f9;
-  border: 1px solid #ddd;
-  margin-top: 8px;
+.patient-tracker form input, .patient-tracker form select, .patient-tracker form textarea {
   border-radius: 5px;
 }
 
-#stats {
-  margin-top: 15px;
-  font-weight: bold;
-  text-align: center;
+.patient {
+  border-radius: 8px;
+  transition: box-shadow 0.3s;
 }
 
-/* Modal background */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  overflow: auto;
+.patient:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* Modal content */
-.modal-content {
-  background: #120000;
-  margin: 5% auto;
-  padding: 20px;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 900px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-/* Close button */
-.close {
-  float: right;
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #333;
+/* Medication Reminder Section */
+.medication-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
 }

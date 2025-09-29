@@ -6,12 +6,13 @@
   <title>Francine for Hope</title>
   <link rel="icon" type="image/jpeg" href="image/LOG.jpg">
   <link rel="stylesheet" href="style.css">
+  <!-- Add Google Fonts for a more professional look -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="header">
     <h1>Francine for Hope</h1>
     <nav>
-      
       <ul>
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#resources">Resources</a></li>
@@ -19,15 +20,17 @@
         <li><a href="#apply">Apply for Support</a></li>
         <li><a href="#portal">Patient Portal</a></li>
         <li><a href="#hospital">Hospital/Admin</a></li>
+        <!-- Added link to Patient Tracker in nav for easy access -->
+        <li><a href="#patients">Patient Tracker</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#about">About</a></li>
-        
       </ul>
     </nav>
-
   </header>
 
   <section id="home" class="hero">
+    <!-- Added a placeholder image for attractiveness; replace with a real image like a hopeful cancer support photo -->
+    <img src="images/hero-image.jpg" alt="Hopeful Cancer Support" class="hero-image">
     <h2>Building a Future of Hope</h2>
     <p>This project is a mission to support those affected by cancer. Born from personal experiences of pain and loss, we are committed to creating a meaningful impact for cancer patients and their families in Rwanda and beyond.</p>
   </section>
@@ -36,14 +39,18 @@
     <h2>Cancer Resources</h2>
     <div class="resource-grid">
       <div class="resource-card">
+        <!-- Added icon image for breast cancer; use a free icon or photo -->
+        <img src="images/breast-cancer-icon.png" alt="Breast Cancer Icon" class="resource-icon">
         <h3>Breast Cancer</h3>
         <p>Learn about early detection, treatment options, and support networks.</p>
       </div>
       <div class="resource-card">
+        <img src="images/lung-cancer-icon.png" alt="Lung Cancer Icon" class="resource-icon">
         <h3>Lung Cancer</h3>
         <p>Understand the causes, prevention strategies, and latest treatments.</p>
       </div>
       <div class="resource-card">
+        <img src="images/colon-cancer-icon.png" alt="Colon Cancer Icon" class="resource-icon">
         <h3>Colon Cancer</h3>
         <p>Discover the importance of screening and reducing risk factors.</p>
       </div>
@@ -53,6 +60,8 @@
   <section id="donate" class="donate">
     <h2>Support with a Donation</h2>
     <p>Your contribution helps provide food, transport, and medical support for patients at Butaro Cancer Center and Rwanda Cancer Center.</p>
+    <!-- Added a donation image for visual appeal; e.g., people helping or a donation box -->
+    <img src="images/donation-image.jpg" alt="Donate to Help" class="section-image">
     <label for="donationAmount">Donation Amount (RWF):</label>
     <input type="number" id="donationAmount" min="1000" placeholder="Enter amount">
     <button onclick="makeDonation()">Donate</button>
@@ -64,6 +73,8 @@
 
   <section id="apply" class="apply">
     <h2>Apply for Free Support</h2>
+    <!-- Added image for apply section; e.g., a form or support group photo -->
+    <img src="images/apply-support-image.jpg" alt="Apply for Support" class="section-image">
     <form id="applyForm">
       <label for="name">Full Name:</label>
       <input type="text" id="name" required>
@@ -78,15 +89,28 @@
 
   <section id="portal" class="portal">
     <h2>Patient Portal</h2>
+    <!-- Added button to toggle/show the Patient Tracker system; anyone can click to access and fill -->
+    <button id="openTrackerBtn" onclick="toggleTracker()">Open Patient Tracker</button>
     <label for="portalPhone">Enter your phone number:</label>
     <input type="text" id="portalPhone">
     <button onclick="checkApplication()">Check My Application</button>
     <div id="portalResult"></div>
+    <!-- Added new section for Medication Reminder System -->
+    <div id="medicationReminder" class="medication-section">
+      <h3>Medication Reminder</h3>
+      <p>Set a reminder for your medication. Enter the time and we'll alert you (browser must stay open).</p>
+      <input type="time" id="reminderTime" required>
+      <input type="text" id="medicationName" placeholder="Medication Name" required>
+      <button onclick="setReminder()">Set Reminder</button>
+      <p id="reminderStatus"></p>
+    </div>
   </section>
 
   <section id="hospital" class="hospital">
     <h2>Hospital / Admin Portal</h2>
     <p>For staff at Butaro Hospital and Rwanda Cancer Center.</p>
+    <!-- Added image for hospital section; e.g., hospital building or medical staff -->
+    <img src="images/hospital-image.jpg" alt="Hospital Staff" class="section-image">
     <label for="adminPassword">Password:</label>
     <input type="password" id="adminPassword">
     <button onclick="adminLogin()">Login</button>
@@ -102,54 +126,54 @@
       <ul id="scheduleList"></ul>
     </div>
   </section>
-<section class="patient-tracker" id="patients">
-  <h2>📊 Cancer Patient Tracker</h2>
-  <p>Manage and monitor patient records securely and transparently.</p>
 
-  <form id="patientForm">
-    <input type="text" id="name" placeholder="Full Name" required>
-    <input type="number" id="age" placeholder="Age">
-    <input type="text" id="diagnosis" placeholder="Diagnosis">
-    <input type="text" id="stage" placeholder="Stage">
-    <select id="risk">
-      <option value="">Select Risk Level</option>
-      <option>Low</option>
-      <option>Moderate</option>
-      <option>High</option>
-    </select>
-    <textarea id="notes" placeholder="Notes"></textarea>
-    <input type="submit" value="Add Patient" class="btn">
-  </form>
-
-  <div class="controls">
-    <input type="text" id="searchName" placeholder="Search by name">
-    <select id="filterRisk">
-      <option value="">Filter by Risk</option>
-      <option>Low</option>
-      <option>Moderate</option>
-      <option>High</option>
-    </select>
-    <select id="sortBy">
-      <option value="">Sort by</option>
-      <option value="ageAsc">Age ↑</option>
-      <option value="ageDesc">Age ↓</option>
-      <option value="nameAsc">Name A–Z</option>
-      <option value="nameDesc">Name Z–A</option>
-    </select>
-    <button id="seed">Load Samples</button>
-    <button id="clearAll">Clear All</button>
-    <button id="exportBtn">Export</button>
-    <button id="importBtn">Import</button>
-    <input type="file" id="importJSON" hidden>
-  </div>
-
-  <div id="patientList"></div>
-  <div id="stats"></div>
-</section>
-
+  <!-- Patient Tracker section is now toggled via button in Patient Portal; initially hidden -->
+  <section class="patient-tracker" id="patients" style="display: none;">
+    <h2>📊 Cancer Patient Tracker</h2>
+    <p>Manage and monitor patient records securely and transparently. Anyone can add their details here.</p>
+    <form id="patientForm">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="number" id="age" placeholder="Age">
+      <input type="text" id="diagnosis" placeholder="Diagnosis">
+      <input type="text" id="stage" placeholder="Stage">
+      <select id="risk">
+        <option value="">Select Risk Level</option>
+        <option>Low</option>
+        <option>Moderate</option>
+        <option>High</option>
+      </select>
+      <textarea id="notes" placeholder="Notes"></textarea>
+      <input type="submit" value="Add Patient" class="btn">
+    </form>
+    <div class="controls">
+      <input type="text" id="searchName" placeholder="Search by name">
+      <select id="filterRisk">
+        <option value="">Filter by Risk</option>
+        <option>Low</option>
+        <option>Moderate</option>
+        <option>High</option>
+      </select>
+      <select id="sortBy">
+        <option value="">Sort by</option>
+        <option value="ageAsc">Age ↑</option>
+        <option value="ageDesc">Age ↓</option>
+        <option value="nameAsc">Name A–Z</option>
+        <option value="nameDesc">Name Z–A</option>
+      </select>
+      <button id="seed">Load Samples</button>
+      <button id="clearAll">Clear All</button>
+      <button id="exportBtn">Export</button>
+      <button id="importBtn">Import</button>
+      <input type="file" id="importJSON" hidden>
+    </div>
+    <div id="patientList"></div>
+    <div id="stats"></div>
+  </section>
 
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
+    <!-- Added contact image; e.g., map or phone icon -->
+    <img src="images/contact-image.jpg" alt="Contact Us" class="section-image">
     <p>Email: info@francineforhope.rw</p>
     <p>Phone: +250 788846522</p>
     <p>Location: Kigali, Rwanda</p>
@@ -157,6 +181,8 @@
 
   <section id="about" class="about">
     <h2>About Us</h2>
+    <!-- Added about image; e.g., team photo or founder portrait -->
+    <img src="images/about-image.jpg" alt="About Our Team" class="section-image">
     <p>Our mission is to provide hope, resources, and support to cancer patients and their families. Inspired by personal loss, we aim to make a difference through education, awareness, and technology.</p>
     <p>Connect with us:</p>
     <ul>
@@ -170,7 +196,7 @@
     <p>Stay informed. Get regular checkups. Fight cancer together.</p>
   </footer>
   
-<script src="tracker.js"></script>
- <script src="script.js"></script>
+  <script src="tracker.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
