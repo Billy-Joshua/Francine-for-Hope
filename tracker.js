@@ -224,5 +224,4 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("reminderTime").value = "";
         document.getElementById("medicationName").value = "";
     }
-
 });
