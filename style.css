@@ -1,196 +1,190 @@
-/* style.css - Updated for professional look: better fonts, spacing, shadows, image styles */
+/* Enhanced for better UX: responsiveness, smoother animations */
 body {
-  font-family: 'Roboto', sans-serif; /* Changed to Roboto for modern, professional feel */
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
-  line-height: 1.6; /* Improved readability */
+  background-color: #000000;
+  color: #FFFFFF;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
-  background-color: #04AA6D;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Added subtle shadow for depth */
+  background-color: #000000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
 }
 
 nav ul {
-  list-style-type: none;
+  display: flex;
   margin: 0;
   padding: 0;
-  background-color: #333;
-  overflow: hidden;
-}
-
-nav ul li {
-  float: left;
+  list-style: none;
 }
 
 nav ul li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
+  color: #FFFFFF;
   text-decoration: none;
-  transition: background-color 0.3s; /* Smooth hover transition */
+  padding: 10px 15px;
+  transition: color 0.3s;
 }
 
 nav ul li a:hover {
-  background-color: #111;
+  color: #A0A0A0;
 }
 
-.hero {
-  text-align: center;
-  padding: 50px 20px;
-  background-color: #e9ecef;
-  position: relative; /* For overlay if needed */
+.get-started {
+  background: transparent;
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
-.hero-image {
+.get-started:hover {
+  background: #FFFFFF;
+  color: #000000;
+  transform: scale(1.05);
+}
+
+.hero, .resources, .donate, .apply, .portal, .hospital, .patient-tracker, .contact, .about {
+  padding: 80px 20px 40px; /* Reduced padding for shorter page */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-overlay {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.section-image, .hero-image {
   width: 100%;
-  max-height: 400px;
+  height: auto;
+  max-height: 400px; /* Limit height to shorten page */
   object-fit: cover;
-  margin-bottom: 20px;
-  border-radius: 8px; /* Rounded corners for modern look */
-}
-
-.resources, .donate, .apply, .portal, .hospital, .contact, .about, .patient-tracker {
-  padding: 30px; /* Increased padding for better spacing */
-  margin: 20px auto;
-  background-color: white;
-  border-radius: 10px; /* Softer corners */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Deeper shadow for professionalism */
-  max-width: 1200px; /* Centered content for wide screens */
+  border-radius: 10px;
 }
 
 .resource-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 15px;
 }
 
 .resource-card {
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  transition: transform 0.3s; /* Hover effect */
+  background: #1A1A1A;
+  padding: 15px;
+  border-radius: 20px;
+  transition: all 0.3s;
 }
 
 .resource-card:hover {
-  transform: translateY(-5px); /* Lift on hover for interactivity */
-}
-
-.resource-icon {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 10px;
-}
-
-.section-image {
-  width: 100%;
-  max-height: 300px;
-  object-fit: cover;
-  margin-bottom: 20px;
-  border-radius: 8px;
-}
-
-button {
-  padding: 12px 20px; /* Larger buttons for better touch */
-  background-color: #04AA6D;
-  color: white;
-  border: none;
-  cursor: pointer;
-  margin-top: 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-button:hover {
-  background-color: #037a4d;
-  transform: scale(1.05);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(255,255,255,0.1);
 }
 
 input, textarea, select {
-  padding: 10px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  background: #1A1A1A;
+  border: none;
+  color: #FFFFFF;
+  padding: 15px;
+  margin: 10px 0;
   width: 100%;
-  font-family: 'Roboto', sans-serif;
+  border-radius: 10px;
+  transition: border 0.3s;
 }
 
-#donationProgress {
-  width: 100%;
-  background-color: #ddd;
-  margin: 15px 0;
-  border-radius: 4px;
+input:focus, textarea:focus {
+  outline: none;
+  border: 1px solid #FFFFFF;
 }
 
-#progressBar {
-  width: 0%;
-  height: 20px;
-  background-color: #04AA6D;
-  border-radius: 4px;
-  transition: width 0.5s; /* Smooth progress animation */
+button {
+  background: transparent;
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
+  padding: 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background: #FFFFFF;
+  color: #000000;
+  transform: scale(1.05);
 }
 
 footer {
-  background-color: #333;
-  color: white;
+  background: #000000;
   text-align: center;
   padding: 20px;
-  margin-top: 20px;
+  color: #A0A0A0;
+  margin-top: auto; /* Stick to bottom */
 }
 
-/* Fade-in for sections */
+footer button {
+  margin-top: 10px;
+}
+
+/* Responsive: Stack header on mobile */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+  }
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .get-started {
+    margin-top: 10px;
+  }
+}
+
+/* Animations */
 section {
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s ease-out;
+  transform: translateY(30px);
+  transition: all 0.6s ease-in-out;
 }
+
 section.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Toast notifications */
 .toast {
   position: fixed;
   top: 20px;
   right: 20px;
-  background-color: #007bff;
-  color: white;
+  background: #1A1A1A;
+  color: #FFFFFF;
   padding: 10px 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border-radius: 10px;
   z-index: 1000;
-  font-size: 14px;
+  animation: fadeInOut 3s;
 }
 
-/* Patient Tracker Styles (enhanced) */
-.patient-tracker {
-  max-width: 900px;
-}
-
-.patient-tracker form input, .patient-tracker form select, .patient-tracker form textarea {
-  border-radius: 5px;
-}
-
-.patient {
-  border-radius: 8px;
-  transition: box-shadow 0.3s;
-}
-
-.patient:hover {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-/* Medication Reminder Section */
-.medication-section {
-  margin-top: 20px;
-  padding: 15px;
-  background: #f9f9f9;
-  border-radius: 8px;
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
 }

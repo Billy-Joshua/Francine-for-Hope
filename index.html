@@ -4,64 +4,77 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Francine for Hope</title>
-  <link rel="icon" type="image/jpeg" href="image/LOG.jpg">
+  <link rel="icon" type="image/jpeg" href="images/LOG.jpg"> <!-- Replace with your logo image -->
   <link rel="stylesheet" href="style.css">
-  <!-- Add Google Fonts for a more professional look -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="header">
-    <h1>Francine for Hope</h1>
+    <div class="logo">Francine for Hope</div>
     <nav>
       <ul>
-        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#home">Home</a></li>
         <li><a href="#resources">Resources</a></li>
         <li><a href="#donate">Donate</a></li>
         <li><a href="#apply">Apply for Support</a></li>
         <li><a href="#portal">Patient Portal</a></li>
         <li><a href="#hospital">Hospital/Admin</a></li>
-        <!-- Added link to Patient Tracker in nav for easy access -->
         <li><a href="#patients">Patient Tracker</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#about">About</a></li>
       </ul>
     </nav>
+    <button class="get-started" onclick="scrollToSection('contact')">Get Involved</button>
   </header>
 
   <section id="home" class="hero">
-    <!-- Added a placeholder image for attractiveness; replace with a real image like a hopeful cancer support photo -->
-    <img src="images/hero-image.jpg" alt="Hopeful Cancer Support" class="hero-image">
-    <h2>Building a Future of Hope</h2>
-    <p>This project is a mission to support those affected by cancer. Born from personal experiences of pain and loss, we are committed to creating a meaningful impact for cancer patients and their families in Rwanda and beyond.</p>
+    <div class="hero-overlay">
+      <img src="https://lymphoma.org/wp-content/uploads/2021/09/EthanZohn_LRFAmbassador.jpg" alt="Hopeful Cancer Survivor" class="hero-image"> <!-- Updated to real image -->
+      <h2>Building a Future of Hope</h2>
+      <p>Inspired by the loss of our founder's mother to lung, liver, and colon cancer, we support patients in Rwanda and Africa.</p>
+    </div>
   </section>
 
   <section id="resources" class="resources">
-    <h2>Cancer Resources</h2>
+    <div class="section-header">
+      <h2>Our Resources</h2>
+      <p>Explore support for cancer in Rwanda and beyond, including local centers like Butaro and Rwanda Cancer Center.</p>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search by cancer type or location...">
+      <button>Filters</button>
+    </div>
+    <div class="filter-buttons">
+      <button>All</button>
+      <button>Breast Cancer</button>
+      <button>Lung Cancer</button>
+      <button>Colon Cancer</button>
+    </div>
     <div class="resource-grid">
-      <div class="resource-card">
-        <!-- Added icon image for breast cancer; use a free icon or photo -->
-        <img src="images/breast-cancer-icon.png" alt="Breast Cancer Icon" class="resource-icon">
+      <div class="resource-card featured">
+        <img src="https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3488696245724192822" alt="Breast Cancer Awareness in Rwanda"> <!-- Updated to real image -->
         <h3>Breast Cancer</h3>
-        <p>Learn about early detection, treatment options, and support networks.</p>
+        <p>Early detection and support networks tailored for African contexts.</p>
       </div>
-      <div class="resource-card">
-        <img src="images/lung-cancer-icon.png" alt="Lung Cancer Icon" class="resource-icon">
+      <div class="resource-card featured">
+        <img src="https://www.jto.org/cms/10.1016/j.jtho.2022.05.004/asset/5a6d70ba-70b0-4a8c-9d10-8ee5c116cc30/main.assets/gr2_lrg.jpg" alt="Lung Cancer in Rwanda"> <!-- Updated to real image -->
         <h3>Lung Cancer</h3>
-        <p>Understand the causes, prevention strategies, and latest treatments.</p>
+        <p>Prevention and treatments, focusing on Rwanda's environmental factors.</p>
       </div>
-      <div class="resource-card">
-        <img src="images/colon-cancer-icon.png" alt="Colon Cancer Icon" class="resource-icon">
+      <div class="resource-card featured">
+        <img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1186%2Fs12876-022-02275-0/MediaObjects/12876_2022_2275_Fig2_HTML.png" alt="Colon Cancer Screening in Africa"> <!-- Updated to real image -->
         <h3>Colon Cancer</h3>
-        <p>Discover the importance of screening and reducing risk factors.</p>
+        <p>Screening importance in Africa, with local resources.</p>
       </div>
     </div>
   </section>
 
   <section id="donate" class="donate">
-    <h2>Support with a Donation</h2>
-    <p>Your contribution helps provide food, transport, and medical support for patients at Butaro Cancer Center and Rwanda Cancer Center.</p>
-    <!-- Added a donation image for visual appeal; e.g., people helping or a donation box -->
-    <img src="images/donation-image.jpg" alt="Donate to Help" class="section-image">
+    <div class="section-header">
+      <h2>Support with a Donation</h2>
+      <p>Help provide food, transport, and medical aid in Rwanda and Africa.</p>
+    </div>
+    <img src="images/donation-image.jpg" alt="Donate to Help" class="section-image"> <!-- Replace if needed -->
     <label for="donationAmount">Donation Amount (RWF):</label>
     <input type="number" id="donationAmount" min="1000" placeholder="Enter amount">
     <button onclick="makeDonation()">Donate</button>
@@ -72,9 +85,11 @@
   </section>
 
   <section id="apply" class="apply">
-    <h2>Apply for Free Support</h2>
-    <!-- Added image for apply section; e.g., a form or support group photo -->
-    <img src="images/apply-support-image.jpg" alt="Apply for Support" class="section-image">
+    <div class="section-header">
+      <h2>Apply for Free Support</h2>
+      <p>Access aid for cancer care in Rwanda and Africa.</p>
+    </div>
+    <img src="images/apply-support-image.jpg" alt="Apply for Support" class="section-image"> <!-- Replace if needed -->
     <form id="applyForm">
       <label for="name">Full Name:</label>
       <input type="text" id="name" required>
@@ -88,17 +103,18 @@
   </section>
 
   <section id="portal" class="portal">
-    <h2>Patient Portal</h2>
-    <!-- Added button to toggle/show the Patient Tracker system; anyone can click to access and fill -->
-    <button id="openTrackerBtn" onclick="toggleTracker()">Open Patient Tracker</button>
+    <div class="section-header">
+      <h2>Patient Portal</h2>
+      <p>Manage your journey with reminders and trackers.</p>
+    </div>
+    <button id="openTrackerBtn" onclick="toggleTracker()">Toggle Patient Tracker</button>
     <label for="portalPhone">Enter your phone number:</label>
     <input type="text" id="portalPhone">
     <button onclick="checkApplication()">Check My Application</button>
     <div id="portalResult"></div>
-    <!-- Added new section for Medication Reminder System -->
     <div id="medicationReminder" class="medication-section">
       <h3>Medication Reminder</h3>
-      <p>Set a reminder for your medication. Enter the time and we'll alert you (browser must stay open).</p>
+      <p>Set reminders for your treatments (browser must stay open).</p>
       <input type="time" id="reminderTime" required>
       <input type="text" id="medicationName" placeholder="Medication Name" required>
       <button onclick="setReminder()">Set Reminder</button>
@@ -107,10 +123,11 @@
   </section>
 
   <section id="hospital" class="hospital">
-    <h2>Hospital / Admin Portal</h2>
-    <p>For staff at Butaro Hospital and Rwanda Cancer Center.</p>
-    <!-- Added image for hospital section; e.g., hospital building or medical staff -->
-    <img src="images/hospital-image.jpg" alt="Hospital Staff" class="section-image">
+    <div class="section-header">
+      <h2>Hospital / Admin Portal</h2>
+      <p>For staff at Butaro and Rwanda Cancer Centers.</p>
+    </div>
+    <img src="images/hospital-image.jpg" alt="Hospital Staff" class="section-image"> <!-- Replace if needed -->
     <label for="adminPassword">Password:</label>
     <input type="password" id="adminPassword">
     <button onclick="adminLogin()">Login</button>
@@ -127,10 +144,11 @@
     </div>
   </section>
 
-  <!-- Patient Tracker section is now toggled via button in Patient Portal; initially hidden -->
-  <section class="patient-tracker" id="patients" style="display: none;">
-    <h2>📊 Cancer Patient Tracker</h2>
-    <p>Manage and monitor patient records securely and transparently. Anyone can add their details here.</p>
+  <section id="patients" class="patient-tracker" style="display: none;">
+    <div class="section-header">
+      <h2>Patient Tracker</h2>
+      <p>Track records for cancer patients in Rwanda and Africa.</p>
+    </div>
     <form id="patientForm">
       <input type="text" id="name" placeholder="Full Name" required>
       <input type="number" id="age" placeholder="Age">
@@ -143,7 +161,7 @@
         <option>High</option>
       </select>
       <textarea id="notes" placeholder="Notes"></textarea>
-      <input type="submit" value="Add Patient" class="btn">
+      <input type="submit" value="Add Patient">
     </form>
     <div class="controls">
       <input type="text" id="searchName" placeholder="Search by name">
@@ -171,32 +189,50 @@
   </section>
 
   <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <!-- Added contact image; e.g., map or phone icon -->
-    <img src="images/contact-image.jpg" alt="Contact Us" class="section-image">
-    <p>Email: info@francineforhope.rw</p>
-    <p>Phone: +250 788846522</p>
-    <p>Location: Kigali, Rwanda</p>
+    <div class="section-header">
+      <h2>Get in Touch</h2>
+      <p>Let's start your journey to hope and healing.</p>
+    </div>
+    <img src="images/contact-image.jpg" alt="Contact Us" class="section-image"> <!-- Replace if needed -->
+    <form id="contactForm">
+      <label for="fullName">Full Name *</label>
+      <input type="text" id="fullName" placeholder="John Doe">
+      <label for="email">Email Address *</label>
+      <input type="email" id="email" placeholder="john@example.com">
+      <label for="phoneNumber">Phone Number</label>
+      <input type="tel" id="phoneNumber" placeholder="+1 (555) 123-4567">
+      <button type="submit">Submit</button>
+    </form>
   </section>
 
   <section id="about" class="about">
-    <h2>About Us</h2>
-    <!-- Added about image; e.g., team photo or founder portrait -->
-    <img src="images/about-image.jpg" alt="About Our Team" class="section-image">
-    <p>Our mission is to provide hope, resources, and support to cancer patients and their families. Inspired by personal loss, we aim to make a difference through education, awareness, and technology.</p>
+    <div class="section-header">
+      <h2>About Us</h2>
+      <p>Our mission in Rwanda and Africa.</p>
+    </div>
+    <img src="images/about-image.jpg" alt="About Our Team" class="section-image"> <!-- Replace if needed -->
+    <p>Francine for Hope is a beacon of support and empowerment for cancer patients and their families in Rwanda and across Africa. Inspired by the founder's profound loss of their mother to lung, liver, and colon cancer, our mission is to provide accessible resources, financial aid for treatments, transportation, and nutrition, while fostering awareness and community connections. We partner with local institutions like Butaro Cancer Center and Rwanda Cancer Center to bridge gaps in care, ensuring no one faces this battle alone. Through education, innovation, and compassion, we aim to turn pain into purpose and build a future where hope triumphs over cancer.</p>
     <p>Connect with us:</p>
     <ul>
       <li><a href="https://www.instagram.com/_.billy99/" target="_blank">Instagram</a></li>
       <li><a href="https://www.linkedin.com/in/ishimwe-billy-joshua-ba4195288/" target="_blank">LinkedIn</a></li>
     </ul>
+    <div class="quotes">
+      <h3>Inspirational Quotes</h3>
+      <p>"You are stronger than you know; cancer may bend you, but it will never break your spirit."</p>
+      <p>"Every day is a victory – keep fighting, keep hoping, keep living."</p>
+      <p>"From survivor to thriver: your journey inspires us all."</p>
+      <p>"Cancer took a piece, but it couldn't take your light."</p>
+      <p>"Hope is the heartbeat of healing – you've got this."</p>
+    </div>
   </section>
 
   <footer>
-    <p>Powered by <a href="https://www.linkedin.com/in/ishimwe-billy-joshua-ba4195288/" target="_blank">Billy-Joshua</a></p>
-    <p>Stay informed. Get regular checkups. Fight cancer together.</p>
+    <p>Powered by <a href="https://www.linkedin.com/in/ishimwe-billy-joshua-ba4195288/" target="_blank">Free Cancer to Generation</a></p>
+    <p>Stay informed. Get regular checkups. Fight cancer together in Rwanda and Africa.</p>
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to Top</button>
   </footer>
-  
-  <script src="tracker.js"></script>
+
   <script src="script.js"></script>
 </body>
 </html>
