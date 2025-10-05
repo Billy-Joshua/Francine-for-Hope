@@ -26,7 +26,7 @@
     </nav>
     <button class="get-started" onclick="scrollToSection('contact')">Get Involved</button>
   </header>
-
+  
   <section id="home" class="hero">
     <div class="hero-overlay">
       <img src="images/apply-support-image.jpg" alt="Hopeful Cancer Survivor" class="hero-image"> <!-- Updated to real image -->
@@ -52,17 +52,20 @@
     </div>
     <div class="resource-grid">
       <div class="resource-card featured">
-        <img src="https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3488696245724192822" alt="Breast Cancer Awareness in Rwanda"> <!-- Updated to real image -->
+        <img src="images/breast-cancer-icon.png" alt="Breast Cancer Awareness in Rwanda"> <!-- Updated to real image -->
         <h3>Breast Cancer</h3>
         <p>Early detection and support networks tailored for African contexts.</p>
       </div>
       <div class="resource-card featured">
-        <img src="https://www.jto.org/cms/10.1016/j.jtho.2022.05.004/asset/5a6d70ba-70b0-4a8c-9d10-8ee5c116cc30/main.assets/gr2_lrg.jpg" alt="Lung Cancer in Rwanda"> <!-- Updated to real image -->
+        <!--https://www.jto.org/cms/10.1016/j.jtho.2022.05.004/asset/5a6d70ba-70b0-4a8c-9d10-8ee5c116cc30/main.assets/gr2_lrg.jpg ill change this add to my code -->
+
+        <img src="images/lung-cancer-icon.jpg" alt="Lung Cancer in Rwanda"> <!-- Updated to real image -->
         <h3>Lung Cancer</h3>
         <p>Prevention and treatments, focusing on Rwanda's environmental factors.</p>
       </div>
       <div class="resource-card featured">
-        <img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1186%2Fs12876-022-02275-0/MediaObjects/12876_2022_2275_Fig2_HTML.png" alt="Colon Cancer Screening in Africa"> <!-- Updated to real image -->
+         <img src="images/Colon Cancer.jpg" alt="Colon Cancer Screening in Africa"> <!-- Updated to real image -->
+        <!--  <img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1186%2Fs12876-022-02275-0/MediaObjects/12876_2022_2275_Fig2_HTML.png" alt="Colon Cancer Screening in Africa"> <!-- Updated to real image -->
         <h3>Colon Cancer</h3>
         <p>Screening importance in Africa, with local resources.</p>
       </div>
@@ -74,7 +77,7 @@
       <h2>Support with a Donation</h2>
       <p>Help provide food, transport, and medical aid in Rwanda and Africa.</p>
     </div>
-    <img src="images/donation-image.jpg" alt="Donate to Help" class="section-image"> <!-- Replace if needed -->
+    <img src="images/webpage.jpg" alt="Donate to Help" class="section-image"> <!-- Replace if needed -->
     <label for="donationAmount">Donation Amount (RWF):</label>
     <input type="number" id="donationAmount" min="1000" placeholder="Enter amount">
     <button onclick="makeDonation()">Donate</button>
@@ -204,32 +207,74 @@
       <button type="submit">Submit</button>
     </form>
   </section>
+<section id="about" class="about">
+  <div class="section-header">
+    <h2>About Us</h2>
+    <p>Our mission in Rwanda and Africa.</p>
+  </div>
 
-  <section id="about" class="about">
-    <div class="section-header">
-      <h2>About Us</h2>
-      <p>Our mission in Rwanda and Africa.</p>
+  <img src="images/about-image.jpg" alt="About Our Team" class="section-image">
+
+  <p>
+    Francine for Hope is a beacon of support and empowerment for cancer patients
+    and their families in Rwanda and across Africa. Inspired by the founder's
+    profound loss of their mother to lung, liver, and colon cancer, our mission
+    is to provide accessible resources, financial aid for treatments,
+    transportation, and nutrition, while fostering awareness and community
+    connections. We partner with local institutions like Butaro Cancer Center
+    and Rwanda Cancer Center to bridge gaps in care, ensuring no one faces this
+    battle alone. Through education, innovation, and compassion, we aim to turn
+    pain into purpose and build a future where hope triumphs over cancer.
+  </p>
+
+  <p>Connect with us:</p>
+  <ul>
+    <li><a href="https://www.instagram.com/_.billy99/" target="_blank">Instagram</a></li>
+    <li><a href="https://www.linkedin.com/in/ishimwe-billy-joshua-ba4195288/" target="_blank">LinkedIn</a></li>
+  </ul>
+
+  <div class="quotes">
+    <h3>Inspirational Quotes</h3>
+    <p>"You are stronger than you know; cancer may bend you, but it will never break your spirit."</p>
+    <p>"Every day is a victory – keep fighting, keep hoping, keep living."</p>
+    <p>"From survivor to thriver: your journey inspires us all."</p>
+    <p>"Cancer took a piece, but it couldn't take your light."</p>
+    <p>"Hope is the heartbeat of healing – you've got this."</p>
+  </div>
+
+  <!-- 🌍 Add this part below -->
+  <div class="global-family">
+    <h3>Our Global Family</h3>
+    <p>We unite hearts from around the world — because hope knows no borders.</p>
+    <div class="flag-row">
+      <div class="flag-card">
+        <img src="https://flagcdn.com/w320/de.png" alt="Germany Flag" />
+        <span>Germany</span>
+      </div>
+      <div class="flag-card">
+        <img src="https://flagcdn.com/w320/kr.png" alt="South Korea Flag" />
+        <span>South Korea</span>
+      </div>
+      <div class="flag-card">
+        <img src="https://flagcdn.com/w320/ca.png" alt="Canada Flag" />
+        <span>Canada</span>
+      </div>
+      <div class="flag-card">
+        <img src="https://flagcdn.com/w320/ke.png" alt="Kenya Flag" />
+        <span>Kenya</span>
+        </div>
+        <div class="flag-card">
+        <img src="https://flagcdn.com/w320/rw.png" alt="Rwanda flag" />
+        <span>Rwanda</span>
+      </div>
     </div>
-    <img src="images/about-image.jpg" alt="About Our Team" class="section-image"> <!-- Replace if needed -->
-    <p>Francine for Hope is a beacon of support and empowerment for cancer patients and their families in Rwanda and across Africa. Inspired by the founder's profound loss of their mother to lung, liver, and colon cancer, our mission is to provide accessible resources, financial aid for treatments, transportation, and nutrition, while fostering awareness and community connections. We partner with local institutions like Butaro Cancer Center and Rwanda Cancer Center to bridge gaps in care, ensuring no one faces this battle alone. Through education, innovation, and compassion, we aim to turn pain into purpose and build a future where hope triumphs over cancer.</p>
-    <p>Connect with us:</p>
-    <ul>
-      <li><a href="https://www.instagram.com/_.billy99/" target="_blank">Instagram</a></li>
-      <li><a href="https://www.linkedin.com/in/ishimwe-billy-joshua-ba4195288/" target="_blank">LinkedIn</a></li>
-    </ul>
-    <div class="quotes">
-      <h3>Inspirational Quotes</h3>
-      <p>"You are stronger than you know; cancer may bend you, but it will never break your spirit."</p>
-      <p>"Every day is a victory – keep fighting, keep hoping, keep living."</p>
-      <p>"From survivor to thriver: your journey inspires us all."</p>
-      <p>"Cancer took a piece, but it couldn't take your light."</p>
-      <p>"Hope is the heartbeat of healing – you've got this."</p>
-    </div>
-  </section>
+  </div>
+</section>
+
 
   <footer>
     <p>Powered by <a href="https://www.linkedin.com/in/ishimwe-billy-joshua-ba4195288/" target="_blank">Free Cancer to Generation</a></p>
-    <p>Stay informed. Get regular checkups. Fight cancer together in Rwanda and Africa.</p>
+    <p>Stay informed. Get regular checkups. Fight cancer together .</p>
     <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to Top</button>
   </footer>
 
