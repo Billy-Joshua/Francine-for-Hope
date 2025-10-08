@@ -684,14 +684,95 @@ section.show {
     gap: 15px;
   }
 }
-/* let my GETTING INVOLEVES VISIBLE ON HEADER */
-.header-right {
-  display: flex;
-  align-items: center;
+/* AI Screening Tool (Coming Soon)*/
+.ai-feature {
+  background: linear-gradient(90deg, #00ffff, #0066ff);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-left: 12px; /* space from Get Involved button */
+  box-shadow: 0 0 12px rgba(0,255,255,0.5);
+  animation: pulseGlow 2.5s infinite ease-in-out;
+  white-space: nowrap;
+  transition: all 0.3s ease;
 }
 
-.get-started {
-  white-space: nowrap; /* prevents button text from breaking */
+.ai-feature:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(0,255,255,0.8);
+}
+
+/* reuse your glowPulse keyframes if you already have them */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 12px rgba(0,255,255,0.5); }
+  50% { box-shadow: 0 0 25px rgba(0,255,255,1); }
+}
+
+.ai-placeholder {
+  background: #111; /* dark gray/black background */
+  color: #fff;
+  padding: 120px 20px;
+  text-align: center;
+}
+
+.ai-placeholder .section-header h2 {
+  font-size: 2rem;
+  color: #00aaff;
+  margin-bottom: 10px;
+  animation: glowPulse 2.5s infinite ease-in-out;
+}
+
+.ai-placeholder .section-header p {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 50px;
+}
+
+.ai-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.ai-card {
+  background: #1a1a1a;
+  border: 1px solid #00aaff;
+  border-radius: 15px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ai-card h3 {
+  color: #00ffff;
+  margin-bottom: 12px;
+}
+
+.ai-card p {
+  color: #ddd;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Hover Animation */
+.ai-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 170, 255, 0.7);
+}
+
+/* AI Note */
+.ai-note {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* Reuse glowPulse animation from header for consistency */
+@keyframes glowPulse {
+  0%, 100% { text-shadow: 0 0 10px rgba(0,170,255,0.7); }
+  50% { text-shadow: 0 0 25px rgba(0,170,255,1); }
 }
 
 
