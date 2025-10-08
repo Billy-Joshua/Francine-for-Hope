@@ -776,6 +776,132 @@ section.show {
 }
 
 
+/* Donate Section */
+.donate {
+  background: #111;
+  color: #fff;
+  padding: 120px 20px;
+  text-align: center;
+}
+
+.donate .section-header h2 {
+  font-size: 2rem;
+  color: #00aaff;
+  margin-bottom: 10px;
+  animation: glowPulse 2.5s infinite ease-in-out;
+}
+
+.donate .section-header p {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 40px;
+}
+
+/* Donate Content */
+.donate-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.donate-image {
+  max-width: 400px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0,170,255,0.5);
+  transition: transform 0.3s ease;
+}
+
+.donate-image:hover {
+  transform: scale(1.05);
+}
+
+/* Donation Form */
+.donation-form {
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+.donation-form input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #00aaff;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.donate-btn {
+  background: linear-gradient(90deg, #00aaff, #0066ff);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(0,170,255,0.5);
+}
+
+.donate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(0,170,255,0.8);
+}
+
+/* Progress Bar */
+#donationProgress {
+  width: 100%;
+  height: 12px;
+  background: #222;
+  border-radius: 10px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+#progressBar {
+  height: 100%;
+  width: 0%;
+  background: #00aaff;
+  transition: width 0.5s ease;
+  border-radius: 10px;
+}
+
+/* Donation Features Cards */
+.donate-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.donate-card {
+  background: #1a1a1a;
+  border: 1px solid #00aaff;
+  border-radius: 15px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.donate-card h3 {
+  color: #00ffff;
+  margin-bottom: 12px;
+}
+
+.donate-card p {
+  color: #ddd;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.donate-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0,170,255,0.7);
+}
 
 
 

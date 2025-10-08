@@ -128,6 +128,7 @@
     <p>🌍 Updated for 2025 — advancing toward global cancer equity by 2030.</p>
   </div>
 </section>
+<br>
 <!-- AI Screening Placeholder Section -->
 <section id="ai-section" class="ai-placeholder">
   <div class="section-header">
@@ -158,22 +159,45 @@
     <p><strong>Note:</strong> This AI tool is for awareness purposes only and is not a substitute for professional medical advice.</p>
   </div>
 </section>
+<br>
+ <!-- Donate Section -->
+<section id="donate" class="donate">
+  <div class="section-header">
+    <h2>Support with a Donation</h2>
+    <p>Help provide food, transport, and medical aid in Rwanda and across Africa. Every contribution saves lives.</p>
+  </div>
 
+  <div class="donate-content">
+    <img src="images/support-.jpg" alt="Donate to Help" class="donate-image">
 
-  <section id="donate" class="donate">
-    <div class="section-header">
-      <h2>Support with a Donation</h2>
-      <p>Help provide food, transport, and medical aid in Rwanda and Africa.</p>
+    <div class="donation-form">
+      <label for="donationAmount">Donation Amount (RWF):</label>
+      <input type="number" id="donationAmount" min="1000" placeholder="Enter amount">
+      <button class="donate-btn" onclick="makeDonation()">Donate</button>
+
+      <div id="donationProgress">
+        <div id="progressBar"></div>
+      </div>
+      <p id="donationStatus"></p>
     </div>
-    <img src="images/support-.jpg" alt="Donate to Help" class="section-image"> <!-- Replace if needed -->
-    <label for="donationAmount">Donation Amount (RWF):</label>
-    <input type="number" id="donationAmount" min="1000" placeholder="Enter amount">
-    <button onclick="makeDonation()">Donate</button>
-    <div id="donationProgress">
-      <div id="progressBar"></div>
+  </div>
+
+  <div class="donate-features">
+    <div class="donate-card">
+      <h3>Secure Payment</h3>
+      <p>100% safe and encrypted donation transactions for your peace of mind.</p>
     </div>
-    <p id="donationStatus"></p>
-  </section>
+    <div class="donate-card">
+      <h3>Transparent Tracking</h3>
+      <p>Track how your donation is used and see the real impact in communities.</p>
+    </div>
+    <div class="donate-card">
+      <h3>Future AI Insights</h3>
+      <p>AI-driven suggestions for impactful donations and targeted support (coming soon).</p>
+    </div>
+  </div>
+</section>
+
 
   <section id="apply" class="apply">
     <div class="section-header">

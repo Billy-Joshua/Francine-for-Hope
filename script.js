@@ -283,3 +283,16 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+  function makeDonation() {
+  const amount = document.getElementById('donationAmount').value;
+  const status = document.getElementById('donationStatus');
+  const progress = document.getElementById('progressBar');
+
+  if(amount && amount >= 1000){
+    status.textContent = `Thank you for donating RWF ${amount}!`;
+    let progressWidth = Math.min(amount / 100000 * 100, 100); // Example scaling
+    progress.style.width = progressWidth + '%';
+  } else {
+    status.textContent = "Please enter an amount of at least RWF 1,000";
+  }
+}
