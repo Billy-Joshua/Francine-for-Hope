@@ -7,29 +7,54 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Francine for Hope</title>
-  <link rel="icon" type="image/jpeg" href="images/LOG.jpg"> <!-- Replace with your logo image -->
+  <link rel="icon" type="image/jpeg" href="images/blood cancer.jpg"> <!-- Replace with your logo image -->
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <section id="home" class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Together We Bring <span>Hope</span> Against Cancer</h1>
+    <p class="hero-subtitle">
+      Empowering lives through awareness, compassion, and global collaboration.  
+      From Rwanda to the world, we stand united for a cancer-free future.
+    </p>
+    <div class="hero-buttons">
+      <a href="#resources" class="btn primary">Explore Resources</a>
+      <a href="#donate" class="btn secondary">Support Our Mission</a>
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+</section>
+
 </head>
 <body>
   <!--- this is my head of this website-->
   <header class="header">
-    <div class="logo">Francine for Hope</div>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#resources">Resources</a></li>
-        <li><a href="#donate">Donate</a></li>
-        <li><a href="#apply">Apply for Support</a></li>
-        <li><a href="#portal">Patient Portal</a></li>
-        <li><a href="#hospital">Hospital/Admin</a></li>
-        <li><a href="#patients">Patient Tracker</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#about">About</a></li>
-      </ul>
-    </nav>
-    <button class="get-started" onclick="scrollToSection('contact')">Get Involved</button>
-  </header>
+  <div class="logo">Francine for Hope</div>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#donate">Donate</a></li>
+      <li><a href="#apply">Apply</a></li>
+      <li><a href="#portal">Patient Portal</a></li>
+      <li><a href="#hospital">Hospital/Admin</a></li>
+      <li><a href="#patients">Patient Tracker</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+
+  <button class="get-started">Get Involved</button>
+
+  <div class="menu-toggle" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
   
   <section id="home" class="hero">
     <div class="hero-overlay">
@@ -39,49 +64,75 @@
     </div>
   </section>
  
-  <section id="resources" class="resources">
-    <div class="section-header">
-      <h2>Our Resources</h2>
-      <p>Explore support for cancer in Rwanda and beyond, including local centers like Butaro and Rwanda Cancer Center.</p>
-    </div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search by cancer type or location...">
-      <button>Filters</button>
-    </div>
-    <div class="filter-buttons">
-      <button>All</button>
-      <button>Breast Cancer</button>
-      <button>Lung Cancer</button>
-      <button>Colon Cancer</button>
-    </div>
-    <div class="resource-grid">
-      <div class="resource-card featured">
-        <img src="images/breast-cancer-icon.png" alt="Breast Cancer Awareness in Rwanda"> <!-- Updated to real image -->
-        <h3>Breast Cancer</h3>
-        <p>Early detection and support networks tailored for African contexts.</p>
-      </div>
-      <div class="resource-card featured">
-        <!--https://www.jto.org/cms/10.1016/j.jtho.2022.05.004/asset/5a6d70ba-70b0-4a8c-9d10-8ee5c116cc30/main.assets/gr2_lrg.jpg ill change this add to my code -->
+  <section id="resources" class="resources dark-theme">
+  <div class="section-header">
+    <h2>Global Cancer Resources</h2>
+    <p>Explore worldwide cancer care and awareness. From Rwanda to every continent, we unite efforts for prevention, early detection, and access to treatment by 2030.</p>
+  </div>
 
-        <img src="images/lung-cancer-icon.jpg" alt="Lung Cancer in Rwanda"> <!-- Updated to real image -->
-        <h3>Lung Cancer</h3>
-        <p>Prevention and treatments, focusing on Rwanda's environmental factors.</p>
-      </div>
-      <div class="resource-card featured">
-         <img src="images/Colon Cancer.jpg" alt="Colon Cancer Screening in Africa"> <!-- Updated to real image -->
-        <!--  <img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1186%2Fs12876-022-02275-0/MediaObjects/12876_2022_2275_Fig2_HTML.png" alt="Colon Cancer Screening in Africa"> <!-- Updated to real image -->
-        <h3>Colon Cancer</h3>
-        <p>Screening importance in Africa, with local resources.</p>
-      </div>
+  <div class="search-bar">
+    <input type="text" placeholder="Search by cancer type, country, or hospital...">
+    <button>Filters</button>
+  </div>
+
+  <div class="filter-buttons">
+    <button class="active">All</button>
+    <button>Breast Cancer</button>
+    <button>Lung Cancer</button>
+    <button>Blood Cancer</button>
+    <button>Skin Cancer</button>
+    <button>Prostate Cancer</button>
+  </div>
+
+  <div class="resource-grid">
+    <!-- Breast Cancer -->
+    <div class="resource-card fade-in">
+      <img src="images/breast-cancer-awareness.jpg" alt="Breast Cancer Awareness">
+      <h3>Breast Cancer</h3>
+      <p>Empowering early detection and awareness through international collaboration and education.</p>
     </div>
-  </section>
+
+    <!-- Lung Cancer -->
+    <div class="resource-card fade-in">
+      <img src="images/lung-cancer-awareness.jpg" alt="Lung Cancer">
+      <h3>Lung Cancer</h3>
+      <p>Improving air quality and promoting global research on prevention and treatment access.</p>
+    </div>
+
+    <!-- Blood Cancer -->
+    <div class="resource-card fade-in">
+      <img src="images/blood-cancer-awareness.jpg" alt="Blood Cancer">
+      <h3>Blood Cancer</h3>
+      <p>Linking global support networks for patients in need of bone marrow and advanced therapies.</p>
+    </div>
+
+    <!-- Skin Cancer -->
+    <div class="resource-card fade-in">
+      <img src="images/skin-cancer-awareness.jpg" alt="Skin Cancer">
+      <h3>Skin Cancer</h3>
+      <p>Raising awareness about sun protection and promoting dermatological care worldwide.</p>
+    </div>
+
+    <!-- Prostate Cancer -->
+    <div class="resource-card fade-in">
+      <img src="images/prostate-cancer-awareness.jpg" alt="Prostate Cancer">
+      <h3>Prostate Cancer</h3>
+      <p>Supporting men’s health through education, early screening, and global access to treatment.</p>
+    </div>
+  </div>
+
+  <div class="global-note">
+    <p>🌍 Updated for 2025 — advancing toward global cancer equity by 2030.</p>
+  </div>
+</section>
+
 
   <section id="donate" class="donate">
     <div class="section-header">
       <h2>Support with a Donation</h2>
       <p>Help provide food, transport, and medical aid in Rwanda and Africa.</p>
     </div>
-    <img src="images/webpage.jpg" alt="Donate to Help" class="section-image"> <!-- Replace if needed -->
+    <img src="images/support-.jpg" alt="Donate to Help" class="section-image"> <!-- Replace if needed -->
     <label for="donationAmount">Donation Amount (RWF):</label>
     <input type="number" id="donationAmount" min="1000" placeholder="Enter amount">
     <button onclick="makeDonation()">Donate</button>
@@ -205,9 +256,9 @@
       <label for="fullName">Full Name *</label>
       <input type="text" id="fullName" placeholder="John Doe">
       <label for="email">Email Address *</label>
-      <input type="email" id="email" placeholder="john@example.com">
+      <input type="email" id="email" placeholder="francineforhope@example.com">
       <label for="phoneNumber">Phone Number</label>
-      <input type="tel" id="phoneNumber" placeholder="+1 (555) 123-4567">
+      <input type="tel" id="phoneNumber" placeholder="+1 (888) 465-22">
       <button type="submit">Submit</button>
     </form>
   </section>
@@ -217,7 +268,7 @@
     <p>Our mission in Rwanda and Africa.</p>
   </div>
 
-  <img src="images/about-image.jpg" alt="About Our Team" class="section-image">
+  <img src="images/team.jpg" alt="About Our Team" class="section-image">
 
   <p>
     Francine for Hope is a beacon of support and empowerment for cancer patients

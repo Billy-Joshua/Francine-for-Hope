@@ -233,6 +233,468 @@ section.show {
   color: #ffffff;
   font-size: 14px;
 }
+/* GRLABAL CANCER RESOURCES */
+/* General Dark Theme */
+.resources.dark-theme {
+  background: linear-gradient(180deg, #121212, #1e1e1e);
+  color: #f1f1f1;
+  padding: 70px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Header */
+.resources .section-header h2 {
+  font-size: 2.4rem;
+  color: #ffffff;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.resources .section-header p {
+  color: #bdbdbd;
+  max-width: 750px;
+  margin: 0 auto 40px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Search bar */
+.resources .search-bar {
+  margin-bottom: 25px;
+}
+
+.resources .search-bar input {
+  width: 60%;
+  max-width: 480px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #1c1c1c;
+  color: #e0e0e0;
+  outline: none;
+}
+
+.resources .search-bar button {
+  padding: 12px 20px;
+  border: none;
+  background: #00aaff;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.resources .search-bar button:hover {
+  background: #0088cc;
+}
+
+/* Filter Buttons */
+.resources .filter-buttons button {
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 1px solid #555;
+  background: transparent;
+  color: #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.resources .filter-buttons button.active,
+.resources .filter-buttons button:hover {
+  background: #00aaff;
+  color: #fff;
+  border-color: #00aaff;
+}
+
+/* Grid Layout */
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+/* Cards */
+.resource-card {
+  background: #1a1a1a;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 170, 255, 0.3);
+}
+
+.resource-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  filter: brightness(85%);
+  transition: filter 0.3s ease;
+}
+
+.resource-card:hover img {
+  filter: brightness(100%);
+}
+
+.resource-card h3 {
+  color: #00aaff;
+  font-size: 1.3rem;
+  margin: 18px 0 8px;
+}
+
+.resource-card p {
+  color: #bbb;
+  padding: 0 18px 20px;
+  font-size: 0.95rem;
+}
+
+/* Global Note */
+.global-note {
+  margin-top: 50px;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+/* === Animation Section === */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply staggered delays */
+.resource-card:nth-child(1) { animation-delay: 0.2s; }
+.resource-card:nth-child(2) { animation-delay: 0.4s; }
+.resource-card:nth-child(3) { animation-delay: 0.6s; }
+.resource-card:nth-child(4) { animation-delay: 0.8s; }
+.resource-card:nth-child(5) { animation-delay: 1s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .resources .search-bar input {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+  .resources .filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+/* now im update my header*/
+/* === GLOBAL HEADER STYLES === */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 60px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 170, 255, 0.2);
+  transition: background 0.4s ease, padding 0.3s ease;
+  animation: slideDown 1.2s ease forwards;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #00aaff;
+  letter-spacing: 1px;
+  position: relative;
+  animation: glowPulse 2.5s infinite ease-in-out;
+  text-shadow: 0 0 10px rgba(0,170,255,0.6);
+}
+
+/* Navigation */
+.navbar ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.navbar ul li a {
+  color: #ddd;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #00aaff;
+  transition: width 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  color: #00aaff;
+}
+
+.navbar ul li a:hover::after {
+  width: 100%;
+}
+
+/* Get Involved Button */
+.get-started {
+  background: linear-gradient(90deg, #00aaff, #0066ff);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 24px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(0,170,255,0.5);
+}
+
+.get-started:hover {
+  background: linear-gradient(90deg, #0099ff, #0044ff);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0,170,255,0.7);
+}
+
+/* Scroll effect: solid background after scroll */
+.header.scrolled {
+  background: #111;
+  padding: 12px 50px;
+  border-bottom: 1px solid #00aaff;
+}
+
+/* === MOBILE MENU === */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  height: 3px;
+  width: 25px;
+  background: #fff;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+/* Animations */
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(0,170,255,0.7);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0,170,255,1);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 950px) {
+  .navbar ul {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    flex-direction: column;
+    background: rgba(10,10,10,0.95);
+    padding: 20px 40px;
+    width: 220px;
+    border-left: 2px solid #00aaff;
+    border-bottom: 2px solid #00aaff;
+  }
+
+  .navbar.active ul {
+    display: flex;
+    animation: fadeInMenu 0.4s ease;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  @keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+/*CSS FULL-SCREEN */
+/* === HERO SECTION (FULL SCREEN) === */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* full screen height */
+  background: url('images/global-hope-bg.jpg') center center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+/* Dark overlay for contrast */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.8));
+  z-index: 1;
+}
+
+/* Content */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 0 20px;
+  animation: fadeInUp 1.8s ease forwards;
+}
+
+/* Main title */
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #f1f1f1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.hero-title span {
+  color: #00aaff;
+  text-shadow: 0 0 15px rgba(0,170,255,0.8);
+  animation: glowPulse 3s infinite ease-in-out;
+}
+
+/* Subtitle */
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 35px;
+  line-height: 1.6;
+  animation: fadeInUp 2.5s ease forwards;
+}
+
+/* Buttons */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, #00aaff, #0066ff);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(0,170,255,0.4);
+}
+
+.btn.primary:hover {
+  box-shadow: 0 0 25px rgba(0,170,255,0.8);
+  transform: translateY(-3px);
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 2px solid #00aaff;
+  color: #00aaff;
+}
+
+.btn.secondary:hover {
+  background: #00aaff;
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* === Animation Effects === */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(0,170,255,0.7);
+  }
+  50% {
+    text-shadow: 0 0 25px rgba(0,170,255,1);
+  }
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.3rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+/* let my GETTING INVOLEVES VISIBLE ON HEADER */
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.get-started {
+  white-space: nowrap; /* prevents button text from breaking */
+}
+
+
 
 
 

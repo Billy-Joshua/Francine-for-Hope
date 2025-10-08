@@ -255,3 +255,31 @@ document.addEventListener("DOMContentLoaded", () => {
         showToast(`Viewing ${category} resources.`);
     };
 });
+
+  const header = document.querySelector('.header');
+  const menuToggle = document.querySelector('#menu-toggle');
+  const navbar = document.querySelector('.navbar');
+
+  // Scroll effect for header
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  // Toggle mobile menu
+  menuToggle.addEventListener('click', () => {
+    navbar.classList.toggle('active');
+    menuToggle.classList.toggle('open');
+  });
+// ADDED JAVASCRIPT
+ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
