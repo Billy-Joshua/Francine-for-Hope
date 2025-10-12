@@ -267,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       header.classList.remove('scrolled');
     }
-  });
+  });  
 
   // Toggle mobile menu
   menuToggle.addEventListener('click', () => {
