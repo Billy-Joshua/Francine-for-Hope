@@ -479,3 +479,44 @@ body {
     font-size: 1.1rem;
   }
 }
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #1A1A1A; /* Slightly lighter black for contrast */
+  color: #D3D3D3; /* Light gray text */
+  font-family: 'Roboto', sans-serif;
+  margin-top: auto; /* Push footer to bottom */
+  border-top: 1px solid #333; /* Subtle top border */
+}
+
+footer a {
+  color: #4DB8FF; /* Soft blue for links */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: #80D4FF; /* Lighter blue on hover */
+}
+
+footer p {
+  margin: 8px 0;
+}
+
+footer button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4DB8FF; /* Blue button */
+  color: #0D0D0D; /* Dark text inside button */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+footer button:hover {
+  background-color: #80D4FF;
+  transform: translateY(-2px);
+}
