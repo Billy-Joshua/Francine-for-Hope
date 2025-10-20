@@ -520,3 +520,137 @@ footer button:hover {
   background-color: #80D4FF;
   transform: translateY(-2px);
 }
+/* AI Screening Section */
+#ai-section {
+  background: linear-gradient(180deg, #0D0D0D, #1A1A1A);
+  color: #E0E0E0;
+  padding: 60px 20px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+#ai-section .section-header h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #00E5FF;
+  text-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
+}
+
+#ai-section .section-header p {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  color: #BFBFBF;
+  line-height: 1.7;
+}
+
+/* Form styling */
+#aiForm {
+  max-width: 600px;
+  margin: 0 auto 40px;
+  background-color: #141414;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+}
+
+#aiForm label {
+  display: block;
+  text-align: left;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #00B4DB;
+}
+
+#aiForm textarea {
+  width: 100%;
+  height: 120px;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  background-color: #1E1E1E;
+  color: #E0E0E0;
+  font-size: 14px;
+  resize: vertical;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+#aiForm textarea:focus {
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+}
+
+#aiForm button {
+  margin-top: 15px;
+  padding: 12px 25px;
+  background: linear-gradient(90deg, #00B4DB, #0083B0);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+#aiForm button:hover {
+  background: linear-gradient(90deg, #00E5FF, #00B4DB);
+  box-shadow: 0 4px 18px rgba(0, 229, 255, 0.4);
+  transform: translateY(-3px);
+}
+
+/* AI cards grid */
+.ai-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.ai-card {
+  background-color: #141414;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ai-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.3);
+}
+
+.ai-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.ai-card h3 {
+  color: #00E5FF;
+  margin-bottom: 10px;
+}
+
+.ai-card p {
+  color: #BFBFBF;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Note section */
+.ai-note {
+  margin-top: 40px;
+  background-color: #121212;
+  border-left: 4px solid #00E5FF;
+  padding: 15px;
+  border-radius: 8px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
+}
+
+.ai-note strong {
+  color: #00B4DB;
+}
