@@ -1,216 +1,207 @@
-
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
+  <!-- Metadata for character encoding and responsive design -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Page title -->
   <title>Francine for Hope</title>
+  <!-- Favicon for browser tab icon -->
   <link rel="icon" type="image/jpeg" href="images/blood cancer.jpg"> <!-- Replace with your logo image -->
+  <!-- External CSS link for styling -->
   <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts for Roboto typeface -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-
-  <section id="home" class="hero">
-  <div class="hero-content">
-    <h1 class="hero-title">Together We Bring <span>Hope</span> Against Cancer</h1>
-    <p class="hero-subtitle">
-      Empowering lives through awareness, compassion, and global collaboration.  
-      From Rwanda to the world, we stand united for a cancer-free future.
-    </p>
-    <div class="hero-buttons">
-      <a href="#resources" class="btn primary">Explore Resources</a>
-      <a href="#donate" class="btn secondary">Support Our Mission</a>
-    </div>
-  </div>
-  <div class="hero-overlay"></div>
-</section>
-
 </head>
 <body>
-  <!--- this is my head of this website-->
+  <!-- Header with logo, navigation, and buttons -->
   <header class="header">
-  <div class="logo">Francine for Hope</div>
+    <div class="logo">Francine for Hope</div>
+    <nav class="navbar">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#donate">Donate</a></li>
+        <li><a href="#apply">Apply</a></li>
+        <li><a href="#portal">Patient Portal</a></li>
+        <li><a href="#hospital">Hospital/Admin</a></li>
+        <li><a href="#patients">Patient Tracker</a></li>
+        <li><a href="#ai-section">AI Screening</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+    <!-- Button to trigger AI section scroll and focus -->
+    <button class="ai-feature" onclick="scrollToSection('ai-section')">AI Screening</button>
+    <!-- Button to scroll to donate section -->
+    <button class="get-started" onclick="scrollToSection('donate')">Get Involved</button>
+    <!-- Mobile menu toggle -->
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
 
-  <nav class="navbar">
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#resources">Resources</a></li>
-      
-      0
-      <li><a href="#donate">Donate</a></li>
-      <li><a href="#apply">Apply</a></li>
-      <li><a href="#portal">Patient Portal</a></li>
-      <li><a href="#hospital">Hospital/Admin</a></li>
-      <li><a href="#patients">Patient Tracker</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-  </nav>
-
- <button class="ai-feature" onclick="scrollToSection('ai-section')">AI Screening</button>
- <br>
- <button class="get-started" onclick="location.href='#donate'">Get Involved</button>
- <br>
- <button class="get-started" onclick="location.href='#donate'"></button>
- <br>
- <br>
-
-
-  <div class="menu-toggle" id="menu-toggle">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</header>
-
-  
+  <!-- Home/Hero section with welcoming content -->
   <section id="home" class="hero">
-    <div class="hero-overlay">
-      <img src="images/apply-support-image.jpg" alt="Hopeful Cancer Survivor" class="hero-image"> <!-- Updated to real image -->
-      <h2>Building a Future of Hope</h2>
-      <p>Inspired by the loss of our founder's mother to lung, liver, and colon cancer, we support patients in Rwanda and Africa.</p>
+    <div class="hero-content">
+      <h1 class="hero-title">Together We Bring <span>Hope</span> Against Cancer</h1>
+      <p class="hero-subtitle">
+        Empowering lives through awareness, compassion, and global collaboration.  
+        From Rwanda to the world, we stand united for a cancer-free future.
+      </p>
+      <div class="hero-buttons">
+        <a href="#resources" class="btn primary">Explore Resources</a>
+        <a href="#donate" class="btn secondary">Support Our Mission</a>
+      </div>
+    </div>
+    <div class="hero-overlay"></div>
+  </section>
+
+  <!-- Resources section with search and filters -->
+  <section id="resources" class="resources dark-theme">
+    <div class="section-header">
+      <h2>Global Cancer Resources</h2>
+      <p>Explore worldwide cancer care and awareness. From Rwanda to every continent, we unite efforts for prevention, early detection, and access to treatment by 2030.</p>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search by cancer type, country, or hospital...">
+      <button>Filters</button>
+    </div>
+    <div class="filter-buttons">
+      <button class="active">All</button>
+      <button>Breast Cancer</button>
+      <button>Lung Cancer</button>
+      <button>Blood Cancer</button>
+      <button>Skin Cancer</button>
+      <button>Prostate Cancer</button>
+      <button>Liver Cancer</button>
+    </div>
+    <div class="resource-grid">
+      <!-- Breast Cancer -->
+      <div class="resource-card fade-in">
+        <img src="images/breast-cancer-icon.png" alt="Breast Cancer Awareness">
+        <h3>Breast Cancer</h3>
+        <p>Empowering early detection and awareness through international collaboration and education.</p>
+      </div>
+
+      <!-- Lung Cancer -->
+      <div class="resource-card fade-in">
+        <img src="images/lung cancer1.jpg" alt="Lung Cancer">
+        <h3>Lung Cancer</h3>
+        <p>Improving air quality and promoting global research on prevention and treatment access.</p>
+      </div>
+
+      <!-- Blood Cancer -->
+      <div class="resource-card fade-in">
+        <img src="images/blood cancer.jpg" alt="Blood Cancer">
+        <h3>Blood Cancer</h3>
+        <p>Linking global support networks for patients in need of bone marrow and advanced therapies.</p>
+      </div>
+
+      <!-- Skin Cancer -->
+      <div class="resource-card fade-in">
+        <img src="images/shin cancer.webp" alt="Skin Cancer">
+        <h3>Skin Cancer</h3>
+        <p>Raising awareness about sun protection and promoting dermatological care worldwide.</p>
+      </div>
+
+      <!-- Prostate Cancer -->
+      <div class="resource-card fade-in">
+        <img src="images/prostat-cancer.webp" alt="Prostate Cancer">
+        <h3>Prostate Cancer</h3>
+        <p>Supporting men’s health through education, early screening, and global access to treatment.</p>
+      </div>
+    </div>
+    <div class="global-note">
+      <p>🌍 Updated for 2025 — advancing toward global cancer equity by 2030.</p>
     </div>
   </section>
- 
-  <section id="resources" class="resources dark-theme">
-  <div class="section-header">
-    <h2>Global Cancer Resources</h2>
-    <p>Explore worldwide cancer care and awareness. From Rwanda to every continent, we unite efforts for prevention, early detection, and access to treatment by 2030.</p>
-  </div>
 
-  <div class="search-bar">
-    <input type="text" placeholder="Search by cancer type, country, or hospital...">
-    <button>Filters</button>
-  </div>
-
-  <div class="filter-buttons">
-    <button class="active">All</button>
-    <button>Breast Cancer</button>
-    <button>Lung Cancer</button>
-    <button>Blood Cancer</button>
-    <button>Skin Cancer</button>
-    <button>Prostate Cancer</button>
-    <button liver cancer ></button>
-  </div>
-
-  <div class="resource-grid">
-    <!-- Breast Cancer -->
-    <div class="resource-card fade-in">
-      <img src="images/breast-cancer-icon.png" alt="Breast Cancer Awareness">
-      <h3>Breast Cancer</h3>
-      <p>Empowering early detection and awareness through international collaboration and education.</p>
+  <!-- AI Screening Section with simple AI logic -->
+  <section id="ai-section" class="ai-placeholder">
+    <div class="section-header">
+      <h2>AI Screening Tool (Coming Soon)</h2>
+      <p>Our AI will help detect potential cancer risks, raise awareness, and provide guidance for early action — tailored for Rwanda and worldwide.</p>
     </div>
-
-    <!-- Lung Cancer -->
-    <div class="resource-card fade-in">
-      <img src="images/lung cancer1.jpg" alt="Lung Cancer">
-      <h3>Lung Cancer</h3>
-      <p>Improving air quality and promoting global research on prevention and treatment access.</p>
-    </div>
-
-    <!-- Blood Cancer -->
-    <div class="resource-card fade-in">
-      <img src="images/blood cancer.jpg" alt="Blood Cancer">
-      <h3>Blood Cancer</h3>
-      <p>Linking global support networks for patients in need of bone marrow and advanced therapies.</p>
-    </div>
-
-    <!-- Skin Cancer -->
-    <div class="resource-card fade-in">
-      <img src="images/shin cancer.webp" alt="Skin Cancer">
-      <h3>Skin Cancer</h3>
-      <p>Raising awareness about sun protection and promoting dermatological care worldwide.</p>
-    </div>
-
-    <!-- Prostate Cancer -->
-
-    <div class="resource-card fade-in">
-      <img src="images/prostat-cancer.webp" alt="Prostate Cancer">
-      <h3>Prostate Cancer</h3>
-      <p>Supporting men’s health through education, early screening, and global access to treatment.</p>
-    </div>
-  </div>
-
-  <div class="global-note">
-    <p>🌍 Updated for 2025 — advancing toward global cancer equity by 2030.</p>
-  </div>
-</section>
-<br>
-<!-- AI Screening Placeholder Section -->
-<section id="ai-section" class="ai-placeholder">
-  <div class="section-header">
-    <h2>AI Screening Tool (Coming Soon)</h2>
-    <p>Our AI will help detect potential cancer risks, raise awareness, and provide guidance for early action — tailored for Rwanda and worldwide.</p>
-  </div>
-
-  <div class="ai-features-grid">
-    <div class="ai-card">
-      <h3>Early Detection</h3>
-      <p>Identify early warning signs and potential risks for different types of cancer, helping users take timely action.</p>
-    </div>
-    <div class="ai-card">
-      <h3>Risk Assessment</h3>
-      <p>Analyze symptoms, lifestyle, and environmental factors to provide personalized risk levels and advice.</p>
-    </div>
-    <div class="ai-card">
-      <h3>Guided Awareness</h3>
-      <p>Offer educational resources, local support centers, and actionable steps for prevention and care.</p>
-    </div>
-    <div class="ai-card">
-      <h3>Global Insights</h3>
-      <p>Highlight worldwide statistics and best practices for cancer screening and awareness in real time.</p>
-    </div>
-  </div>
-
-  <div class="ai-note">
-    <p><strong>Note:</strong> This AI tool is for awareness purposes only and is not a substitute for professional medical advice.</p>
-  </div>
-</section>
-<br>
- <!-- Donate Section -->
-<section id="donate" class="donate">
-  <div class="section-header">
-    <h2>Support with a Donation</h2>
-    <p>Help provide food, transport, and medical aid in Rwanda and across Africa. Every contribution saves lives.</p>
-  </div>
-
-  <div class="donate-content">
-    <img src="images/support-.jpg" alt="Donate to Help" class="donate-image">
-
-    <div class="donation-form">
-      <label for="donationAmount">Donation Amount (RWF):</label>
-      <input type="number" id="donationAmount" min="1000" placeholder="Enter amount">
-      <button class="donate-btn" onclick="makeDonation()">Donate</button>
-
-      <div id="donationProgress">
-        <div id="progressBar"></div>
+    <form id="aiForm">
+      <label for="symptoms">Describe your symptoms or how you feel:</label>
+      <textarea id="symptoms" required></textarea>
+      <button type="submit">Get AI Advice</button>
+    </form>
+    <div id="aiResult"></div>
+    <div class="ai-features-grid">
+      <div class="ai-card">
+        <img src="images/early-detection.jpg" alt="Early Detection Illustration">
+        <h3>Early Detection</h3>
+        <p>Identify early warning signs and potential risks for different types of cancer, helping users take timely action.</p>
       </div>
-      <p id="donationStatus"></p>
+      <div class="ai-card">
+        <img src="images/risk-assessment.jpg" alt="Risk Assessment Illustration">
+        <h3>Risk Assessment</h3>
+        <p>Analyze symptoms, lifestyle, and environmental factors to provide personalized risk levels and advice.</p>
+      </div>
+      <div class="ai-card">
+        <img src="images/guided-awareness.jpg" alt="Guided Awareness Illustration">
+        <h3>Guided Awareness</h3>
+        <p>Offer educational resources, local support centers, and actionable steps for prevention and care.</p>
+      </div>
+      <div class="ai-card">
+        <img src="images/global-insights.jpg" alt="Global Insights Illustration">
+        <h3>Global Insights</h3>
+        <p>Highlight worldwide statistics and best practices for cancer screening and awareness in real time.</p>
+      </div>
     </div>
-  </div>
+    <div class="ai-note">
+      <p><strong>Note:</strong> This AI tool is for awareness purposes only and is not a substitute for professional medical advice.</p>
+    </div>
+  </section>
 
-  <div class="donate-features">
-    <div class="donate-card">
-      <h3>Secure Payment</h3>
-      <p>100% safe and encrypted donation transactions for your peace of mind.</p>
+  <!-- Donate Section -->
+  <section id="donate" class="donate">
+    <div class="section-header">
+      <h2>Support with a Donation</h2>
+      <p>Help provide food, transport, and medical aid in Rwanda and across Africa. Every contribution saves lives.</p>
     </div>
-    <div class="donate-card">
-      <h3>Transparent Tracking</h3>
-      <p>Track how your donation is used and see the real impact in communities.</p>
+    <div class="donate-content">
+      <img src="images/support-.jpg" alt="Donate to Help" class="donate-image">
+      <div class="donation-form">
+        <label for="donationAmount">Donation Amount (RWF):</label>
+        <input type="number" id="donationAmount" min="1000" placeholder="Enter amount">
+        <button class="donate-btn" onclick="makeDonation()">Donate</button>
+        <div id="donationProgress">
+          <div id="progressBar"></div>
+        </div>
+        <p id="donationStatus"></p>
+      </div>
     </div>
-    <div class="donate-card">
-      <h3>Future AI Insights</h3>
-      <p>AI-driven suggestions for impactful donations and targeted support (coming soon).</p>
+    <div class="donate-features">
+      <div class="donate-card">
+        <h3>Secure Payment</h3>
+        <p>100% safe and encrypted donation transactions for your peace of mind.</p>
+      </div>
+      <div class="donate-card">
+        <h3>Transparent Tracking</h3>
+        <p>Track how your donation is used and see the real impact in communities.</p>
+      </div>
+      <div class="donate-card">
+        <h3>Future AI Insights</h3>
+        <p>AI-driven suggestions for impactful donations and targeted support (coming soon).</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
+  <!-- Apply Section -->
   <section id="apply" class="apply">
     <div class="section-header">
       <h2>Apply for Free Support</h2>
-      <p>Access aid for cancer care in and Africa.</p>
+      <p>Access aid for cancer care in Rwanda and Africa.</p>
     </div>
-    <img src="images/apply-support-image.jpg" alt="Apply for Support" class="section-image"> <!-- Replace if needed -->
+    <img src="images/apply-support-image.jpg" alt="Apply for Support" class="section-image">
     <form id="applyForm">
       <label for="name">Full Name:</label>
       <input type="text" id="name" required>
@@ -223,6 +214,7 @@
     <p id="applyStatus"></p>
   </section>
 
+  <!-- Patient Portal -->
   <section id="portal" class="portal">
     <div class="section-header">
       <h2>Patient Portal</h2>
@@ -243,12 +235,13 @@
     </div>
   </section>
 
+  <!-- Hospital/Admin Portal -->
   <section id="hospital" class="hospital">
     <div class="section-header">
       <h2>Hospital / Admin Portal</h2>
       <p>For staff at Butaro and Rwanda Cancer Centers.</p>
     </div>
-    <img src="images/hospital-image.jpg" alt="Hospital Staff" class="section-image"> <!-- Replace if needed -->
+    <img src="images/hospital-image.jpg" alt="Hospital Staff" class="section-image">
     <label for="adminPassword">Password:</label>
     <input type="password" id="adminPassword">
     <button onclick="adminLogin()">Login</button>
@@ -265,6 +258,7 @@
     </div>
   </section>
 
+  <!-- Patient Tracker -->
   <section id="patients" class="patient-tracker" style="display: none;">
     <div class="section-header">
       <h2>Patient Tracker</h2>
@@ -309,94 +303,141 @@
     <div id="stats"></div>
   </section>
 
+  <!-- Contact -->
   <section id="contact" class="contact">
     <div class="section-header">
       <h2>Get in Touch</h2>
       <p>Let's start your journey to hope and healing.</p>
     </div>
-    <img src="images/contact-image.jpg" alt="Contact Us" class="section-image"> <!-- Replace if needed -->
+    <img src="images/contact-image.jpg" alt="Contact Us" class="section-image">
     <form id="contactForm">
       <label for="fullName">Full Name *</label>
-      <input type="text" id="fullName" placeholder="John Doe">
+      <input type="text" id="fullName" placeholder="John Doe" required>
       <label for="email">Email Address *</label>
-      <input type="email" id="email" placeholder="francineforhope@example.com">
+      <input type="email" id="email" placeholder="francineforhope@example.com" required>
       <label for="phoneNumber">Phone Number</label>
-      <input type="tel" id="phoneNumber" placeholder="+1 (788) 865-22">
+      <input type="tel" id="phoneNumber" placeholder="+250 (788) 865-22">
       <button type="submit">Submit</button>
     </form>
   </section>
-<section id="about" class="about">
-  <div class="section-header">
-    <h2>About Us</h2>
-    <p>Our mission in Rwanda and Africa.</p>
-  </div>
 
-  <img src="images/team.jpg" alt="About Our Team" class="section-image">
-
-  <p>
-    Francine for Hope is a beacon of support and empowerment for cancer patients
-    and their families in Rwanda and across Africa. Inspired by the founder's
-    profound loss of their mother to lung, liver, and colon cancer, our mission
-    is to provide accessible resources, financial aid for treatments,
-    transportation, and nutrition, while fostering awareness and community
-    connections. We partner with local institutions like Butaro Cancer Center
-    and Rwanda Cancer Center to bridge gaps in care, ensuring no one faces this
-    battle alone. Through education, innovation, and compassion, we aim to turn
-    pain into purpose and build a future where hope triumphs over cancer.
-  </p>
-
-  <p>Connect with us:</p>
-  <ul>
-    <li><a href="https://www.instagram.com/_.billy99/" target="_blank">Instagram</a></li>
-    <li><a href="https://www.linkedin.com/in/ishimwe-billy-joshua-ba4195288/" target="_blank">LinkedIn</a></li>
-  </ul>
-
-  <div class="quotes">
-    <h3>Inspirational Quotes</h3>
-    <p>"You are stronger than you know; cancer may bend you, but it will never break your spirit."</p>
-    <p>"Every day is a victory – keep fighting, keep hoping, keep living."</p>
-    <p>"From survivor to thriver: your journey inspires us all."</p>
-    <p>"Cancer took a piece, but it couldn't take your light."</p>
-    <p>"Hope is the heartbeat of healing – you've got this."</p>
-  </div>
-
-  <!-- 🌍 Add this part below -->
-  <div class="global-family">
-    <h3>Our Global Family</h3>
-    <p>We unite hearts from around the world — because hope knows no borders.</p>
-    <div class="flag-row">
-      <div class="flag-card">
-        <img src="https://flagcdn.com/w320/de.png" alt="Germany Flag" />
-        <span>Germany</span>
-      </div>
-      <div class="flag-card">
-        <img src="https://flagcdn.com/w320/kr.png" alt="South Korea Flag" />
-        <span>South Korea</span>
-      </div>
-      <div class="flag-card">
-        <img src="https://flagcdn.com/w320/ca.png" alt="Canada Flag" />
-        <span>Canada</span>
-      </div>
-      <div class="flag-card">
-        <img src="https://flagcdn.com/w320/ke.png" alt="Kenya Flag" />
-        <span>Kenya</span>
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="section-header">
+      <h2>About Us</h2>
+      <p>Our mission in Rwanda and Africa.</p>
+    </div>
+    <img src="images/team.jpg" alt="About Our Team" class="section-image">
+    <p>
+      Francine for Hope is a beacon of support and empowerment for cancer patients and their families in Rwanda and across Africa. Inspired by the founder's profound loss of their mother to lung, liver, and colon cancer, our mission is to provide accessible resources, financial aid for treatments, transportation, and nutrition, while fostering awareness and community connections. We partner with local institutions like Butaro Cancer Center and Rwanda Cancer Center to bridge gaps in care, ensuring no one faces this battle alone. Through education, innovation, and compassion, we aim to turn pain into purpose and build a future where hope triumphs over cancer.
+    </p>
+    <p>Connect with us:</p>
+    <ul>
+      <li><a href="https://www.instagram.com/_.billy99/" target="_blank">Instagram</a></li>
+      <li><a href="https://www.linkedin.com/in/ishimwe-billy-joshua-ba4195288/" target="_blank">LinkedIn</a></li>
+    </ul>
+    <div class="quotes">
+      <h3>Inspirational Quotes</h3>
+      <p>"You are stronger than you know; cancer may bend you, but it will never break your spirit."</p>
+      <p>"Every day is a victory – keep fighting, keep hoping, keep living."</p>
+      <p>"From survivor to thriver: your journey inspires us all."</p>
+      <p>"Cancer took a piece, but it couldn't take your light."</p>
+      <p>"Hope is the heartbeat of healing – you've got this."</p>
+    </div>
+    <div class="global-family">
+      <h3>Our Global Family</h3>
+      <p>We unite hearts from around the world — because hope knows no borders.</p>
+      <div class="flag-row">
+        <div class="flag-card">
+          <img src="https://flagcdn.com/w320/de.png" alt="Germany Flag">
+          <span>Germany</span>
         </div>
         <div class="flag-card">
-        <img src="https://flagcdn.com/w320/rw.png" alt="Rwanda flag" />
-        <span>Rwanda</span>
+          <img src="https://flagcdn.com/w320/kr.png" alt="South Korea Flag">
+          <span>South Korea</span>
+        </div>
+        <div class="flag-card">
+          <img src="https://flagcdn.com/w320/ca.png" alt="Canada Flag">
+          <span>Canada</span>
+        </div>
+        <div class="flag-card">
+          <img src="https://flagcdn.com/w320/ke.png" alt="Kenya Flag">
+          <span>Kenya</span>
+        </div>
+        <div class="flag-card">
+          <img src="https://flagcdn.com/w320/rw.png" alt="Rwanda Flag">
+          <span>Rwanda</span>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- Blog Section -->
+  <section id="blog" class="blog">
+    <div class="section-header">
+      <h2>Blog</h2>
+      <p>Latest articles on cancer awareness, stories, and tips.</p>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <img src="images/blog1.jpg" alt="Blog Post 1">
+        <h3>Cancer Prevention Tips</h3>
+        <p>Learn simple ways to reduce risk.</p>
+        <a href="#">Read More</a>
+      </div>
+      <div class="blog-card">
+        <img src="images/blog2.jpg" alt="Blog Post 2">
+        <h3>Survivor Stories</h3>
+        <p>Inspiring tales from Rwanda.</p>
+        <a href="#">Read More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section id="events" class="events">
+    <div class="section-header">
+      <h2>Upcoming Events</h2>
+      <p>Join us for awareness webinars and campaigns.</p>
+    </div>
+    <div class="events-grid">
+      <div class="event-card">
+        <h3>Cancer Awareness Webinar</h3>
+        <p>Date: November 15, 2025</p>
+        <a href="#">Register</a>
+      </div>
+      <div class="event-card">
+        <h3>Fundraiser Run</h3>
+        <p>Date: December 5, 2025</p>
+        <a href="#">Join</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials">
+    <div class="section-header">
+      <h2>Testimonials</h2>
+      <p>Hear from survivors and supporters.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p>"Francine for Hope gave me strength during my battle."</p>
+        <span>- Survivor from Rwanda</span>
+      </div>
+      <div class="testimonial-card">
+        <p>"The resources here saved my family."</p>
+        <span>- Supporter from Kenya</span>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <p>Powered by <a href="https://www.linkedin.com/in/ishimwe-billy-joshua-ba4195288/" target="_blank">Free Cancer to Generation</a></p>
-    <p>Stay informed. Get regular checkups. Fight cancer together .</p>
+    <p>Stay informed. Get regular checkups. Fight cancer together.</p>
     <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to Top</button>
   </footer>
 
   <script src="script.js"></script>
-  <script src="tracker.js"></script>
 </body>
 </html>

@@ -1,298 +1,186 @@
+// script.js - Main JavaScript for Francine for Hope website
+
+// Toast Notification Function
+function showToast(message) {
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  toast.innerText = message;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
+}
+
+// Document Ready Event Listener
 document.addEventListener("DOMContentLoaded", () => {
+  showToast("Welcome to Francine for Hope – Let's Fight Cancer Together!");
 
-    // =========================
-    // Toast Notification
-    // =========================
-    function showToast(message) {
-        const toast = document.createElement("div");
-        toast.className = "toast";
-        toast.innerText = message;
-        document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 3000);
+  // Hero Typing Effect
+  const heroText = "Building a Future of Hope";
+  const heroElement = document.querySelector(".hero h2");
+  let i = 0;
+  function typeHeroText() {
+    if (i < heroText.length) {
+      heroElement.innerHTML += heroText.charAt(i);
+      i++;
+      setTimeout(typeHeroText, 100);
     }
+  }
+  if (heroElement) {
+    heroElement.innerHTML = "";
+    typeHeroText();
+  }
 
-    showToast("Welcome to Francine for Hope – Let's Fight Cancer Together!");
-
-    // =========================
-    // Hero Typing Effect
-    // =========================
-    const heroText = "Building a Future of Hope and Strength";
-    const heroElement = document.querySelector(".hero h2");
-    let i = 0;
-    function typeHeroText() {
-        if (i < heroText.length) {
-            heroElement.innerHTML += heroText.charAt(i);
-            i++;
-            setTimeout(typeHeroText, 100);
-        }
-    }
-    if (heroElement) {
-        heroElement.innerHTML = "";
-        typeHeroText();
-    }
-
-    // =========================
-    // Fade-in Sections on Scroll
-    // =========================
-    const sections = document.querySelectorAll("section");
-    function checkFade() {
-        const triggerBottom = window.innerHeight * 0.9;
-        sections.forEach(section => {
-            const sectionTop = section.getBoundingClientRect().top;
-            if (sectionTop < triggerBottom) section.classList.add("show");
-            else section.classList.remove("show");
-        });
-    }
-    window.addEventListener("scroll", checkFade);
-    checkFade();
-
-    // =========================
-    // Smooth Scroll for Nav Links
-    // =========================
-    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const target = document.getElementById(targetId);
-            if (target) {
-                if (targetId === 'patients') {
-                    target.style.display = target.style.display === 'none' ? 'block' : 'block'; // Ensure visible
-                    showToast("Patient Tracker opened");
-                }
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
+  // Fade-in Sections on Scroll
+  const sections = document.querySelectorAll("section");
+  function checkFade() {
+    const triggerBottom = window.innerHeight * 0.9;
+    sections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      if (sectionTop < triggerBottom) section.classList.add("show");
+      else section.classList.remove("show");
     });
+  }
+  window.addEventListener("scroll", checkFade);
+  checkFade();
 
-    // =========================
-    // Toggle Patient Tracker
-    // =========================
-    window.toggleTracker = function() {
-        const tracker = document.getElementById('patients');
-        const isVisible = tracker.style.display !== 'none';
-        tracker.style.display = isVisible ? 'none' : 'block';
-        showToast(isVisible ? 'Patient Tracker hidden' : 'Patient Tracker shown');
-        if (!isVisible) loadPatientList();
-    };
-
-    function loadPatientList() {
-        const patientList = document.getElementById('patientList') || document.createElement('ul');
-        if (!document.getElementById('patientList')) {
-            patientList.id = 'patientList';
-            document.getElementById('patients').appendChild(patientList);
-        }
-        patientList.innerHTML = '';
-        const patients = loadFromStorage() || [];
-        patients.forEach(patient => {
-            const li = document.createElement('li');
-            li.innerHTML = `${patient.name} - ${patient.phone} - ${patient.needs} <button onclick="deletePatient('${patient.id}')">Delete</button>`;
-            patientList.appendChild(li);
-        });
+  // Smooth Scroll Function
+  window.scrollToSection = function(id) {
+    const target = document.getElementById(id);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
     }
+  };
 
-    window.deletePatient = function(id) {
-        let patients = loadFromStorage() || [];
-        patients = patients.filter(p => p.id !== id);
-        saveToStorage(patients);
-        loadPatientList();
-        showToast('Patient removed.');
-    };
-
-    // =========================
-    // Scroll to Section
-    // =========================
-    window.scrollToSection = function(id) {
-        const target = document.getElementById(id);
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-            if (id === 'patients') {
-                target.style.display = 'block';
-                showToast('Scrolled to Patient Tracker');
-            }
-        }
-    };
-
-    // =========================
-    // Donation System
-    // =========================
-    let totalDonations = 0;
-    window.makeDonation = function() {
-        const amount = parseInt(document.getElementById("donationAmount").value);
-        if (!amount || amount < 1000) {
-            showToast("Minimum donation is 1000 RWF.");
-            return;
-        }
-        totalDonations += amount;
-        document.getElementById("donationStatus").innerText = `Total Donations: RWF ${totalDonations}`;
-        const progress = Math.min((totalDonations / 1500000) * 100, 100); // Target 1.5M RWF
-        document.getElementById("progressBar").style.width = `${progress}%`;
-        if (progress >= 100) showToast("Donation goal achieved! Thank you!");
-        document.getElementById("donationAmount").value = "";
-        showToast("Donation successfully added!");
-    };
-
-    // =========================
-    // Apply Form with Validation
-    // =========================
-    const applyForm = document.getElementById("applyForm");
-    if (applyForm) {
-        applyForm.addEventListener("submit", e => {
-            e.preventDefault();
-            const name = document.getElementById("name").value.trim();
-            const phone = document.getElementById("phone").value.trim();
-            const needs = document.getElementById("needs").value.trim();
-
-            if (!name || !phone || !needs) {
-                showToast("All fields are required.");
-                return;
-            }
-            if (!/^\+?[\d\s-]{10,}$/.test(phone)) {
-                showToast("Please enter a valid phone number.");
-                return;
-            }
-
-            const patient = { id: Date.now(), name, phone, needs, timestamp: new Date().toISOString() };
-            let patients = loadFromStorage() || [];
-            patients.push(patient);
-            saveToStorage(patients);
-            document.getElementById("applyStatus").innerText = "Application submitted!";
-            applyForm.reset();
-            showToast("Application sent successfully!");
-            if (document.getElementById('patients').style.display !== 'none') loadPatientList();
-        });
-    }
-
-    // =========================
-    // Storage Functions
-    // =========================
-    function loadFromStorage() {
-        try { return JSON.parse(localStorage.getItem('patients.v1') || '[]'); } catch (e) { return []; }
-    }
-
-    function saveToStorage(data) {
-        localStorage.setItem('patients.v1', JSON.stringify(data));
-    }
-
-    // =========================
-    // Admin Login
-    // =========================
-    window.adminLogin = function() {
-        const password = document.getElementById("adminPassword").value;
-        if (password === "admin123") {
-            document.getElementById("adminPanel").style.display = "block";
-            showToast("Admin logged in successfully.");
-        } else {
-            showToast("Incorrect password.");
-        }
-    };
-
-    // =========================
-    // Medication Reminder
-    // =========================
-    let reminders = [];
-    window.setReminder = function() {
-        const timeInput = document.getElementById("reminderTime").value;
-        const medName = document.getElementById("medicationName").value;
-        if (!timeInput || !medName) {
-            showToast("Time and medication name are required.");
-            return;
-        }
-        const [hours, minutes] = timeInput.split(":").map(Number);
-        const now = new Date();
-        const reminderTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes, 0);
-        if (reminderTime <= now) reminderTime.setDate(reminderTime.getDate() + 1);
-
-        const reminderId = Date.now();
-        reminders.push({ id: reminderId, time: reminderTime, medName });
-        setTimeout(() => {
-            alert(`Time to take ${medName}!`);
-            showToast(`Reminder: Take ${medName} now!`);
-        }, reminderTime - now);
-
-        document.getElementById("reminderStatus").innerText = `Reminder set for ${timeInput} - ${medName}`;
-        document.getElementById("reminderTime").value = "";
-        document.getElementById("medicationName").value = "";
-    };
-
-    // =========================
-    // Schedule Chemotherapy
-    // =========================
-    const scheduleForm = document.getElementById("scheduleForm");
-    if (scheduleForm) {
-        scheduleForm.addEventListener("submit", e => {
-            e.preventDefault();
-            const patient = document.getElementById("patientName").value.trim();
-            const date = document.getElementById("chemoDate").value;
-            if (!patient || !date) {
-                showToast("Patient name and date are required.");
-                return;
-            }
-            const li = document.createElement("li");
-            li.innerHTML = `${patient} - ${date} <button onclick="cancelAppointment(this, '${patient}', '${date}')">Cancel</button>`;
-            document.getElementById("scheduleList").appendChild(li);
-            scheduleForm.reset();
-            showToast("Appointment scheduled!");
-        });
-    }
-
-    window.cancelAppointment = function(button, patient, date) {
-        if (confirm(`Cancel ${patient}'s appointment on ${date}?`)) {
-            button.parentElement.remove();
-            showToast("Appointment cancelled.");
-        }
-    };
-
-    // =========================
-    // Resource Viewer
-    // =========================
-    window.viewResource = function(category) {
-        const resources = {
-            "treatment": "Detailed guide on cancer treatments...",
-            "support": "List of support groups and contacts...",
-            "nutrition": "Nutritional advice for cancer patients..."
-        };
-        document.getElementById("resourceContent").innerText = resources[category] || "Resource not available.";
-        showToast(`Viewing ${category} resources.`);
-    };
-});
-
-  const header = document.querySelector('.header');
-  const menuToggle = document.querySelector('#menu-toggle');
-  const navbar = document.querySelector('.navbar');
-
-  // Scroll effect for header
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });  
-
-  // Toggle mobile menu
+  // Mobile Menu Toggle
+  const menuToggle = document.getElementById("menu-toggle");
+  const navbar = document.querySelector(".navbar ul");
   menuToggle.addEventListener('click', () => {
-    navbar.classList.toggle('active');
-    menuToggle.classList.toggle('open');
+    navbar.classList.toggle("active");
+    menuToggle.classList.toggle("open");
   });
-// ADDED JAVASCRIPT
- document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+
+  // AI Screening Tool Logic
+  const aiForm = document.getElementById("aiForm");
+  if (aiForm) {
+    aiForm.addEventListener("submit", e => {
       e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
+      const symptoms = document.getElementById("symptoms").value.toLowerCase().trim();
+      const resultDiv = document.getElementById("aiResult");
+      resultDiv.innerHTML = '';
+
+      let advice = "No specific matches found. Advice: Consult a doctor for any concerns.";
+      // Simple rule-based "AI" detection (based on common symptoms from Wikipedia)
+      if (symptoms.includes("lump") || symptoms.includes("swelling")) {
+        advice = "Possible breast cancer risk (lumps/swelling). Advice: Get a mammogram; early detection is key.";
+      } else if (symptoms.includes("cough") || symptoms.includes("breathlessness")) {
+        advice = "Possible lung cancer risk (persistent cough/breath issues). Advice: Quit smoking, see a doctor for CT scan.";
+      } else if (symptoms.includes("fatigue") || symptoms.includes("weight loss")) {
+        advice = "General cancer indicator (unexplained fatigue/weight loss). Advice: Blood tests recommended; maintain healthy diet.";
+      } else if (symptoms.includes("pain") || symptoms.includes("bleeding")) {
+        advice = "Possible colon/liver cancer (abdominal pain/bleeding). Advice: Colonoscopy or liver scan; avoid alcohol.";
+      } else if (symptoms.includes("skin change") || symptoms.includes("mole")) {
+        advice = "Possible skin cancer (skin changes/moles). Advice: Use sunscreen, dermatologist visit.";
+      } else if (symptoms.includes("urination issues") || symptoms.includes("blood in urine")) {
+        advice = "Possible prostate cancer (urination problems). Advice: PSA test; regular checkups for men over 50.";
+      } else if (symptoms.includes("jaundice") || symptoms.includes("abdominal pain")) {
+        advice = "Possible liver cancer (jaundice/pain). Advice: Hepatitis vaccination; liver function tests.";
+      }
+
+      resultDiv.innerHTML = `<p>${advice}</p><p>Note: This is not medical advice. See a professional.</p>`;
+      showToast("AI advice generated!");
+      aiForm.reset();
+    });
+  }
+
+  // Donation Function
+  let totalDonations = 0;
+  window.makeDonation = function() {
+    const amount = parseInt(document.getElementById("donationAmount").value);
+    if (!amount || amount < 1000) return showToast("Minimum 1000 RWF");
+    totalDonations += amount;
+    document.getElementById("donationStatus").innerText = `Total: RWF ${totalDonations}`;
+    const progress = Math.min((totalDonations / 1000000) * 100, 100);
+    document.getElementById("progressBar").style.width = `${progress}%`;
+    document.getElementById("donationAmount").value = "";
+    showToast("Donation added!");
+  };
+
+  // Apply Form Submission
+  const applyForm = document.getElementById("applyForm");
+  if (applyForm) {
+    applyForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const needs = document.getElementById("needs").value.trim();
+      if (!name || !phone || !needs) return showToast("All fields required");
+      // Placeholder for storage or API
+      document.getElementById("applyStatus").innerText = "Application submitted!";
+      applyForm.reset();
+      showToast("Application sent!");
+    });
+  }
+
+  // Patient Portal Check
+  window.checkApplication = function() {
+    const phone = document.getElementById("portalPhone").value.trim();
+    // Placeholder for retrieval
+    document.getElementById("portalResult").innerHTML = `<p>Application for ${phone}: Details here.</p>`;
+    showToast("Application checked!");
+  };
+
+  // Admin Login
+  window.adminLogin = function() {
+    const password = document.getElementById("adminPassword").value;
+    if (password === "admin123") {
+      document.getElementById("adminPanel").style.display = "block";
+      showToast("Logged in!");
+    } else {
+      showToast("Wrong password");
+    }
+  };
+
+  // Chemo Schedule
+  const scheduleForm = document.getElementById("scheduleForm");
+  if (scheduleForm) {
+    scheduleForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const patient = document.getElementById("patientName").value;
+      const date = document.getElementById("chemoDate").value;
+      const li = document.createElement("li");
+      li.textContent = `${patient} - ${date}`;
+      document.getElementById("scheduleList").appendChild(li);
+      scheduleForm.reset();
+      showToast("Schedule added!");
+    });
+  }
+
+  // Patient Tracker Toggle
+  window.toggleTracker = function() {
+    const tracker = document.getElementById("patients");
+    tracker.style.display = tracker.style.display === "none" ? "block" : "none";
+    showToast(tracker.style.display === "block" ? "Tracker opened" : "Tracker closed");
+  };
+
+  // Medication Reminder
+  window.setReminder = function() {
+    const time = document.getElementById("reminderTime").value;
+    const name = document.getElementById("medicationName").value;
+    if (!time || !name) return showToast("Fields required");
+    document.getElementById("reminderStatus").textContent = `Reminder set for ${time} - ${name}`;
+    // Placeholder timer
+    showToast("Reminder set!");
+  };
+
+  // Resource Search
+  const searchInput = document.getElementById("resourceSearch");
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase();
+      const cards = document.querySelectorAll(".resource-card");
+      cards.forEach(card => {
+        const title = card.querySelector("h3").textContent.toLowerCase();
+        card.style.display = title.includes(query) ? "block" : "none";
       });
     });
-  });
-  function makeDonation() {
-  const amount = document.getElementById('donationAmount').value;
-  const status = document.getElementById('donationStatus');
-  const progress = document.getElementById('progressBar');
-
-  if(amount && amount >= 1000){
-    status.textContent = `Thank you for donating RWF ${amount}!`;
-    let progressWidth = Math.min(amount / 100000 * 100, 100); // Example scaling
-    progress.style.width = progressWidth + '%';
-  } else {
-    status.textContent = "Please enter an amount of at least RWF 1,000";
   }
-}
+});
