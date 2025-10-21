@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Donation Function
-  
+
   let totalDonations = 0;
   window.makeDonation = function() {
     const amount = parseInt(document.getElementById("donationAmount").value);
@@ -189,3 +189,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
