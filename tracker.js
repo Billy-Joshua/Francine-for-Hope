@@ -1,227 +1,262 @@
-// script.js - Updated with toggle for Patient Tracker and new Medication Reminder system
+// script.js - Extended and polished version with animated toasts, 
+// persistent reminders, and patient tracker enhancements
+
 document.addEventListener("DOMContentLoaded", () => {
 
-    // =========================
-    // Toast Notification (replaces alert for welcome)
-    // =========================
-    function showToast(message) {
+    // ===================================================
+    // UNIVERSAL TOAST SYSTEM (Animated, Reusable)
+    // ===================================================
+    function showToast(message, type = "info") {
         const toast = document.createElement("div");
-        toast.className = "toast";
+        toast.className = `toast ${type}`;
         toast.innerText = message;
         document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 3000);
+
+        // Animate in
+        setTimeout(() => toast.classList.add("show"), 50);
+
+        // Remove after 4 seconds
+        setTimeout(() => {
+            toast.classList.remove("show");
+            setTimeout(() => toast.remove(), 500);
+        }, 4000);
     }
 
-    showToast("Welcome to the Francine for Hope Cancer Support Hub!");
+    // Toast Styles (auto-injected)
+    const style = document.createElement("style");
+    style.innerHTML = `
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            z-index: 9999;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .toast.success { background: #198754; }
+        .toast.error { background: #dc3545; }
+        .toast.info { background: #0dcaf0; }
+    `;
+    document.head.appendChild(style);
 
-    // =========================
-    // Hero Typing Effect
-    // =========================
+    showToast("Welcome to Francine for Hope Cancer Support Hub!", "info");
+
+    // ===================================================
+    // HERO TYPING EFFECT
+    // ===================================================
     const heroText = "Building a Future of Hope";
     const heroElement = document.querySelector(".hero h2");
-    let i = 0;
-    function typeHeroText() {
-        if (i < heroText.length) {
-            heroElement.innerHTML += heroText.charAt(i);
-            i++;
-            setTimeout(typeHeroText, 100);
-        }
-    }
-    if(heroElement) {
-        heroElement.innerHTML = "";
-        typeHeroText();
+    if (heroElement) {
+        heroElement.textContent = "";
+        let i = 0;
+        (function typeHero() {
+            if (i < heroText.length) {
+                heroElement.textContent += heroText.charAt(i);
+                i++;
+                setTimeout(typeHero, 100);
+            }
+        })();
     }
 
-    // =========================
-    // Fade-in Sections on Scroll
-    // =========================
+    // ===================================================
+    // SCROLL FADE-IN ANIMATION
+    // ===================================================
     const sections = document.querySelectorAll("section");
     function checkFade() {
         const triggerBottom = window.innerHeight * 0.9;
         sections.forEach(section => {
             const sectionTop = section.getBoundingClientRect().top;
-            if(sectionTop < triggerBottom){
-                section.classList.add("show");
-            } else {
-                section.classList.remove("show");
-            }
+            section.classList.toggle("show", sectionTop < triggerBottom);
         });
     }
     window.addEventListener("scroll", checkFade);
-    checkFade(); // trigger on load
+    checkFade();
 
-    // =========================
-    // Button Hover Scaling
-    // =========================
-    const buttons = document.querySelectorAll("button, input[type='submit'], a");
-    buttons.forEach(btn => {
-        btn.addEventListener("mouseenter", () => {
-            btn.style.transform = "scale(1.05)";
-        });
-        btn.addEventListener("mouseleave", () => {
-            btn.style.transform = "scale(1)";
-        });
+    // ===================================================
+    // HOVER BUTTON EFFECT
+    // ===================================================
+    document.querySelectorAll("button, input[type='submit'], a").forEach(btn => {
+        btn.addEventListener("mouseenter", () => (btn.style.transform = "scale(1.05)"));
+        btn.addEventListener("mouseleave", () => (btn.style.transform = "scale(1)"));
     });
 
-    // =========================
-    // Light Bulb Toggle (original)
-    // =========================
-    function light(state) {
-        var image = document.getElementById('myImage');
-        if (state == 1) {
-            image.src = 'image/pic_bulbon.gif';
-        } else {
-            image.src = 'image/pic_bulboff.gif';
-        }
-    }
-    window.light = light;
+    // ===================================================
+    // LIGHT BULB TOGGLE
+    // ===================================================
+    window.light = state => {
+        const img = document.getElementById("myImage");
+        if (img) img.src = state === 1 ? "image/pic_bulbon.gif" : "image/pic_bulboff.gif";
+    };
 
-    // =========================
-    // Hide Elements by Class (original)
-    // =========================
-    function myFunction() {
-        var elements = document.getElementsByClassName('cancer');
-        for (var i = 0; i < elements.length; i++) {
-            elements[i].style.display = 'none';
-        }
-    }
-    window.myFunction = myFunction;
+    // ===================================================
+    // HIDE ELEMENTS BY CLASS
+    // ===================================================
+    window.myFunction = () => {
+        document.querySelectorAll(".cancer").forEach(el => (el.style.display = "none"));
+    };
 
-    // =========================
-    // Show Current Date (original)
-    // =========================
-    function showDate() {
-        var demo = document.getElementById('demo');
-        if(demo) {
-            demo.innerHTML = Date();
-        }
-    }
-    window.showDate = showDate;
+    // ===================================================
+    // SHOW CURRENT DATE
+    // ===================================================
+    window.showDate = () => {
+        const demo = document.getElementById("demo");
+        if (demo) demo.innerHTML = new Date().toLocaleString();
+    };
 
-    // =========================
-    // Donation Functionality (existing)
-    // =========================
+    // ===================================================
+    // DONATION TRACKER
+    // ===================================================
     let totalDonations = 0;
-    window.makeDonation = function() {
+    window.makeDonation = () => {
         const amount = parseInt(document.getElementById("donationAmount").value);
         if (!amount || amount < 1000) {
-            showToast("Please enter at least 1000 RWF.");
+            showToast("Please enter at least 1000 RWF.", "error");
             return;
         }
         totalDonations += amount;
         document.getElementById("donationStatus").innerText = `Total donations: RWF ${totalDonations}`;
-        let progress = Math.min((totalDonations / 1000000) * 100, 100); // target 1M RWF
+        const progress = Math.min((totalDonations / 1000000) * 100, 100);
         document.getElementById("progressBar").style.width = progress + "%";
         document.getElementById("donationAmount").value = "";
-    }
+        showToast("Donation added. Thank you!", "success");
+    };
 
-    // =========================
-    // Apply Form (existing)
-    // =========================
+    // ===================================================
+    // APPLY FORM (SAVES TO LOCALSTORAGE)
+    // ===================================================
     const applyForm = document.getElementById("applyForm");
-    if(applyForm){
-        applyForm.addEventListener("submit", function(e) {
+    if (applyForm) {
+        applyForm.addEventListener("submit", e => {
             e.preventDefault();
             const name = document.getElementById("name").value;
             const phone = document.getElementById("phone").value;
             const needs = document.getElementById("needs").value;
 
-            const application = { name, phone, needs };
-            localStorage.setItem(phone, JSON.stringify(application));
-
+            localStorage.setItem(phone, JSON.stringify({ name, phone, needs }));
             document.getElementById("applyStatus").innerText = "Application submitted successfully!";
-            this.reset();
+            showToast("Application saved!", "success");
+            applyForm.reset();
         });
     }
 
-    // =========================
-    // Patient Portal (existing)
-    // =========================
-    window.checkApplication = function() {
+    // ===================================================
+    // PATIENT PORTAL - CHECK APPLICATION
+    // ===================================================
+    window.checkApplication = () => {
         const phone = document.getElementById("portalPhone").value;
         const data = localStorage.getItem(phone);
+        const result = document.getElementById("portalResult");
+
         if (data) {
             const app = JSON.parse(data);
-            document.getElementById("portalResult").innerHTML = `
-              <p><strong>Name:</strong> ${app.name}</p>
-              <p><strong>Needs:</strong> ${app.needs}</p>
-            `;
+            result.innerHTML = `<p><strong>Name:</strong> ${app.name}</p>
+                                <p><strong>Needs:</strong> ${app.needs}</p>`;
+            showToast("Application found!", "success");
         } else {
-            document.getElementById("portalResult").innerText = "No application found for this phone number.";
+            result.innerText = "No application found for this phone number.";
+            showToast("No record found.", "error");
         }
-    }
+    };
 
-    // =========================
-    // Admin Login (existing)
-    // =========================
-    window.adminLogin = function() {
+    // ===================================================
+    // ADMIN LOGIN
+    // ===================================================
+    window.adminLogin = () => {
         const password = document.getElementById("adminPassword").value;
         if (password === "admin123") {
             document.getElementById("adminPanel").style.display = "block";
+            showToast("Welcome, Admin!", "success");
         } else {
-            showToast("Wrong password!");
+            showToast("Wrong password!", "error");
         }
-    }
+    };
 
-    // =========================
-    // Schedule Chemotherapy (existing)
-    // =========================
+    // ===================================================
+    // CHEMOTHERAPY SCHEDULER
+    // ===================================================
     const scheduleForm = document.getElementById("scheduleForm");
-    if(scheduleForm){
-        scheduleForm.addEventListener("submit", function(e) {
+    if (scheduleForm) {
+        scheduleForm.addEventListener("submit", e => {
             e.preventDefault();
             const patient = document.getElementById("patientName").value;
             const date = document.getElementById("chemoDate").value;
+            const list = document.getElementById("scheduleList");
             const li = document.createElement("li");
             li.innerText = `${patient} - Chemotherapy on ${date}`;
-            document.getElementById("scheduleList").appendChild(li);
-            this.reset();
+            list.appendChild(li);
+            scheduleForm.reset();
+            showToast("Schedule added!", "success");
         });
     }
 
-    // =========================
-    // New: Toggle Patient Tracker Visibility (via button in Patient Portal)
-    // =========================
-    window.toggleTracker = function() {
+    // ===================================================
+    // PATIENT TRACKER TOGGLE
+    // ===================================================
+    window.toggleTracker = () => {
         const tracker = document.getElementById("patients");
-        if (tracker.style.display === "none" || tracker.style.display === "") {
-            tracker.style.display = "block";
-            showToast("Patient Tracker opened. Add your details if needed.");
-        } else {
-            tracker.style.display = "none";
-            showToast("Patient Tracker closed.");
+        if (!tracker) return;
+        const isHidden = tracker.style.display === "none" || !tracker.style.display;
+        tracker.style.display = isHidden ? "block" : "none";
+        showToast(isHidden ? "Patient Tracker opened." : "Patient Tracker closed.", "info");
+    };
+
+    // ===================================================
+    // MEDICATION REMINDER SYSTEM (With LocalStorage + Log)
+    // ===================================================
+    let reminderLog = JSON.parse(localStorage.getItem("reminderLog") || "[]");
+
+    function updateReminderList() {
+        const container = document.getElementById("reminderHistory");
+        if (container) {
+            container.innerHTML = reminderLog
+                .map(r => `<li>${r.time} - ${r.medName}</li>`)
+                .join("");
         }
     }
 
-    // =========================
-    // New: Medication Reminder System (simple client-side timer with alert)
-    // =========================
-    let reminderInterval;
-    window.setReminder = function() {
+    window.setReminder = () => {
         const timeInput = document.getElementById("reminderTime").value;
         const medName = document.getElementById("medicationName").value;
         if (!timeInput || !medName) {
-            showToast("Please enter time and medication name.");
+            showToast("Please enter both time and medication name.", "error");
             return;
         }
 
         const [hours, minutes] = timeInput.split(":").map(Number);
         const now = new Date();
         const reminderTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes, 0);
+        if (reminderTime < now) reminderTime.setDate(reminderTime.getDate() + 1);
 
-        if (reminderTime < now) {
-            reminderTime.setDate(reminderTime.getDate() + 1); // Set for next day if time passed
-        }
+        const diff = reminderTime - now;
 
-        const timeDiff = reminderTime - now;
-
-        setTimeout(() => {
-            alert(`Time to take your medication: ${medName}`);
-            showToast(`Reminder: Take ${medName} now!`);
-        }, timeDiff);
+        // Save to log
+        reminderLog.push({ time: timeInput, medName });
+        localStorage.setItem("reminderLog", JSON.stringify(reminderLog));
+        updateReminderList();
 
         document.getElementById("reminderStatus").innerText = `Reminder set for ${timeInput} - ${medName}`;
+        showToast(`Reminder set for ${medName}`, "success");
+
+        // Schedule the alert
+        setTimeout(() => {
+            alert(`⏰ Time to take your medication: ${medName}`);
+            showToast(`Time to take: ${medName}`, "info");
+        }, diff);
+
         document.getElementById("reminderTime").value = "";
         document.getElementById("medicationName").value = "";
-    }
+    };
+
+    // Load existing reminders on start
+    updateReminderList();
 });
