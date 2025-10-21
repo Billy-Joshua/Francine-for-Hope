@@ -92,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Donation Function
+  
   let totalDonations = 0;
   window.makeDonation = function() {
     const amount = parseInt(document.getElementById("donationAmount").value);
@@ -121,6 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Patient Portal Check
+
   window.checkApplication = function() {
     const phone = document.getElementById("portalPhone").value.trim();
     // Placeholder for retrieval
@@ -140,6 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Chemo Schedule
+
   const scheduleForm = document.getElementById("scheduleForm");
   if (scheduleForm) {
     scheduleForm.addEventListener("submit", e => {
@@ -155,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Patient Tracker Toggle
+
   window.toggleTracker = function() {
     const tracker = document.getElementById("patients");
     tracker.style.display = tracker.style.display === "none" ? "block" : "none";
@@ -172,6 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Resource Search
+
   const searchInput = document.getElementById("resourceSearch");
   if (searchInput) {
     searchInput.addEventListener("input", () => {
