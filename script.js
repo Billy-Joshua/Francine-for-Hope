@@ -165,13 +165,13 @@ document.addEventListener("DOMContentLoaded", () => {
     showToast(tracker.style.display === "block" ? "Tracker opened" : "Tracker closed");
   };
 
-  // Medication Reminder alarm
+  // Medication Reminder
   window.setReminder = function() {
     const time = document.getElementById("reminderTime").value;
     const name = document.getElementById("medicationName").value;
     if (!time || !name) return showToast("Fields required");
     document.getElementById("reminderStatus").textContent = `Reminder set for ${time} - ${name}`;
-    // Placeholder timer logic
+    // Placeholder timer
     showToast("Reminder set!");
   };
 
