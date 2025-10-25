@@ -175,18 +175,67 @@ document.addEventListener("DOMContentLoaded", () => {
     showToast("Reminder set!");
   };
 
-  // Resource Search
 
-  const searchInput = document.getElementById("resourceSearch");
-  if (searchInput) {
-    searchInput.addEventListener("input", () => {
-      const query = searchInput.value.toLowerCase();
-      const cards = document.querySelectorAll(".resource-card");
-      cards.forEach(card => {
-        const title = card.querySelector("h3").textContent.toLowerCase();
-        card.style.display = title.includes(query) ? "block" : "none";
-      });
+// Resource Search
+const searchInput = document.getElementById("resourceSearch");
+if (searchInput) {
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+    const cards = document.querySelectorAll(".resource-card");
+    cards.forEach(card => {
+      const title = card.querySelector("h3").textContent.toLowerCase();
+      card.style.display = title.includes(query) ? "block" : "none";
     });
+  });
+}
+});
+// Parallax background effect for hero section
+window.addEventListener("scroll", () => {
+  const hero = document.querySelector(".hero");
+  if (hero) {
+    hero.style.backgroundPositionY = `${window.scrollY * 0.5}px`;
   }
 });
+// Scroll to Top Button
+const scrollBtn = document.createElement("button");
+scrollBtn.textContent = "↑ Top";
+scrollBtn.className = "scroll-top";
+document.body.appendChild(scrollBtn);
 
+scrollBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+window.addEventListener("scroll", () => {
+  scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+});
+
+// Motivation Messages
+const messages = [
+  "Every small donation changes a life ❤️",
+  "Early detection saves lives 🌸",
+  "You are part of the cure 💪",
+  "Hope is stronger than fear 💖"
+];
+setInterval(() => {
+  showToast(messages[Math.floor(Math.random() * messages.length)]);
+}, 20000);
+// Live Date & Time
+setInterval(() => {
+  const now = new Date();
+  const timeElement = document.getElementById("liveTime");
+  if (timeElement) {
+    timeElement.textContent = now.toLocaleString('en-US', { timeStyle: 'short', dateStyle: 'medium' });
+  }
+}, 1000);
+function showToast(message) {
+  const toast = document.createElement("div");
+  toast.className = "toast";
+
+  // Limit message length to 50 chars
+  if (message.length > 50) {
+    message = message.slice(0, 50) + '…';
+  }
+
+  toast.innerText = message;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
+}
