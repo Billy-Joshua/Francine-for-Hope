@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showToast("Reminder set!");
   };
 
-  // Resource Search
+
 
   const searchInput = document.getElementById("resourceSearch");
   if (searchInput) {
@@ -190,3 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
+
+
+ 
