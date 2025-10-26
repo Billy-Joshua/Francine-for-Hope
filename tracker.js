@@ -1,5 +1,4 @@
-// script.js — Full Extended Version for Francine for Hope Hub
-// ==============================================
+
 // Author: Joshua Billy Ishimwe
 // Description: Handles UI animation, patient portal, admin features,
 // donation tracking, medication reminders, and real-time interactivity.
