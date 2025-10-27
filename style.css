@@ -1067,6 +1067,131 @@ footer button:hover {
     font-size: 14px;
   }
 }
+/* ===== Apply Section ===== */
+.apply {
+  background-color: #1A1A1A;
+  color: #D3D3D3;
+  padding: 90px 30px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.apply .section-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #FFFFFF;
+}
+
+.apply .section-header p {
+  font-size: 1.1rem;
+  color: #BFBFBF;
+  margin-bottom: 30px;
+}
+
+.apply .section-image {
+  width: 100%;
+  max-width: 800px;      /* controls maximum width */
+  max-height: 400px;     /* limits height on large screens */
+  height: auto;          /* keeps aspect ratio */
+  object-fit: cover;     /* crops proportionally */
+  border-radius: 12px;
+  display: block;
+  margin: 20px auto;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+.apply .section-image:hover {
+  transform: scale(1.02); /* subtle zoom on hover */
+}
+
+#applyForm {
+  max-width: 600px;
+  margin: 40px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #141414;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(77,77,77,0.5);
+}
+
+#applyForm label {
+  text-align: left;
+  font-weight: 600;
+  color: #00B4DB;
+}
+
+#applyForm input, #applyForm textarea {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1E1E1E;
+  color: #E0E0E0;
+  font-size: 14px;
+  outline: none;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+#applyForm input:focus, #applyForm textarea:focus {
+  box-shadow: 0 0 10px rgba(0,229,255,0.4);
+  transform: scale(1.02);
+}
+
+#applyForm textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+#applyForm button {
+  padding: 15px 30px;
+  background: linear-gradient(90deg, #00B4DB, #0083B0);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+#applyForm button:hover {
+  background: linear-gradient(90deg, #00E5FF, #00B4DB);
+  box-shadow: 0 0 15px rgba(0,229,255,0.5);
+  transform: translateY(-3px);
+}
+
+#applyStatus {
+  margin-top: 15px;
+  color: #00E5FF;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .apply .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .apply .section-header p {
+    font-size: 1rem;
+  }
+
+  .apply .section-image {
+    max-height: 300px;
+  }
+
+  #applyForm {
+    padding: 20px;
+    gap: 12px;
+  }
+
+  #applyForm input, #applyForm textarea, #applyForm button {
+    font-size: 14px;
+  }
+}
+
 
 
 
