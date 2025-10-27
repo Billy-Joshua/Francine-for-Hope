@@ -1406,7 +1406,7 @@ footer button:hover {
 .donate .section-header h2 {
     font-size: 2.5rem;
     margin-bottom: 10px;
-    color: #D3D3D3; /* gold for headings */
+    color: #00B4DB; /* light blue for headings */
 }
 
 .donate .section-header p {
@@ -1514,7 +1514,7 @@ footer button:hover {
 }
 
 .donate-card h3 {
-    color: #D3D3D3;
+    color: #00B4DB;
     margin-bottom: 10px;
 }
 
