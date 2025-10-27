@@ -813,134 +813,186 @@ footer button:hover {
 .global-note strong {
   color: #00B4DB;
 }
-/* Hospital Section */
+/* ===== Hospital / Admin Portal Alternative Style ===== */
 .hospital {
-  background-color: #0d0d0d; /* Dark theme */
-  color: #f0f0f0;
-  padding: 50px 20px;
-  text-align: center;
+  background-color: #121212;
+  color: #E0E0E0;
+  padding: 80px 20px;
   font-family: 'Roboto', sans-serif;
+  text-align: center;
 }
 
 .hospital .section-header h2 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
+  color: #00E5FF;
   margin-bottom: 10px;
-  color: #ffffff;
+  text-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
 }
 
 .hospital .section-header p {
-  font-size: 1.1rem;
-  color: #ccc;
-  margin-bottom: 30px;
+  font-size: 1.2rem;
+  color: #BFBFBF;
+  margin-bottom: 40px;
 }
 
-/* Image Styling */
+/* Content layout */
 .hospital .hospital-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+  justify-items: center;
 }
 
 .hospital .section-image {
   width: 100%;
-  max-width: 700px; /* Controls the max width */
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  max-width: 500px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
   object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Admin Login Styling */
+.hospital .section-image:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(0,229,255,0.4);
+}
+
+/* Admin Login Card */
 .admin-login {
+  width: 100%;
+  max-width: 350px;
+  background: linear-gradient(145deg, #1B1B1B, #141414);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0,229,255,0.25);
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  max-width: 400px;
+  gap: 15px;
   text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.admin-login:hover {
+  transform: translateY(-5px);
+}
+
+.admin-login label {
+  font-weight: 600;
+  color: #00B4DB;
 }
 
 .admin-login input {
-  padding: 10px;
-  border-radius: 6px;
+  padding: 12px;
+  border-radius: 10px;
   border: none;
+  background-color: #1E1E1E;
+  color: #E0E0E0;
+  font-size: 14px;
   outline: none;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.admin-login input:focus {
+  box-shadow: 0 0 12px rgba(0,229,255,0.5);
+  transform: scale(1.02);
 }
 
 .admin-login button {
   padding: 12px;
+  border-radius: 10px;
   border: none;
-  border-radius: 6px;
-  background-color: #ff4b2b;
-  color: white;
+  background: linear-gradient(90deg, #00E5FF, #0083B0);
+  color: #121212;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .admin-login button:hover {
-  background-color: #ff3a1a;
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px rgba(0,229,255,0.5);
 }
 
-/* Admin Panel Styling */
+/* Admin Panel */
 .admin-panel {
   display: none;
   margin-top: 40px;
-  background-color: #1a1a1a;
-  padding: 30px;
-  border-radius: 12px;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  background: linear-gradient(145deg, #1B1B1B, #141414);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0,229,255,0.25);
 }
 
 .admin-panel h3 {
+  color: #00E5FF;
   margin-bottom: 20px;
-  color: #ff4b2b;
+  text-align: center;
 }
 
-.admin-panel form {
+#scheduleForm {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.admin-panel input {
-  padding: 10px;
-  border-radius: 6px;
+#scheduleForm label {
+  color: #00B4DB;
+  font-weight: 600;
+}
+
+#scheduleForm input {
+  padding: 12px;
+  border-radius: 10px;
   border: none;
+  background-color: #1E1E1E;
+  color: #E0E0E0;
   outline: none;
 }
 
-.admin-panel button {
-  padding: 12px;
-  border: none;
-  border-radius: 6px;
-  background-color: #ff4b2b;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+#scheduleForm input:focus {
+  box-shadow: 0 0 12px rgba(0,229,255,0.5);
 }
 
-.admin-panel button:hover {
-  background-color: #ff3a1a;
+#scheduleForm button {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(90deg, #00E5FF, #0083B0);
+  color: #121212;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+#scheduleForm button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px rgba(0,229,255,0.5);
 }
 
 #scheduleList {
   margin-top: 20px;
-  list-style-type: none;
+  list-style: none;
   padding: 0;
-  color: #ccc;
+  color: #BFBFBF;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .hospital .hospital-content {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .hospital .section-image,
+  .admin-login {
+    max-width: 100%;
   }
 }
+
 
 .about .section-image {
   width: 100%;

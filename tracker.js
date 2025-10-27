@@ -345,3 +345,227 @@ document.addEventListener("DOMContentLoaded", () => {
     // =============================================================
     console.log("✅ Francine for Hope Hub script loaded successfully.");
 });
+
+// ====== script.js - Enhanced Version for Francine for Hope ======
+
+// Toast Notification Utility
+function showToast(message, duration = 3000, type = "info") {
+    const toast = document.createElement("div");
+    toast.className = `toast ${type}`;
+    toast.innerText = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), duration);
+}
+
+// ====== HERO TYPING EFFECT ======
+function typeText(element, text, speed = 100) {
+    let i = 0;
+    element.innerHTML = "";
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    type();
+}
+
+// ====== FADE-IN SECTIONS ON SCROLL ======
+function initFadeInSections() {
+    const sections = document.querySelectorAll("section");
+    function checkFade() {
+        const triggerBottom = window.innerHeight * 0.9;
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            section.classList.toggle("show", sectionTop < triggerBottom);
+        });
+    }
+    window.addEventListener("scroll", checkFade);
+    checkFade();
+}
+
+// ====== SMOOTH SCROLL ======
+function scrollToSection(id) {
+    const target = document.getElementById(id);
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ====== MOBILE MENU ======
+function initMobileMenu() {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navbar = document.querySelector(".navbar ul");
+    if (!menuToggle || !navbar) return;
+
+    menuToggle.addEventListener('click', () => {
+        navbar.classList.toggle("active");
+        menuToggle.classList.toggle("open");
+    });
+}
+
+// ====== AI SCREENING TOOL ======
+function initAIScreening() {
+    const aiForm = document.getElementById("aiForm");
+    if (!aiForm) return;
+
+    aiForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const symptoms = document.getElementById("symptoms").value.toLowerCase().trim();
+        const resultDiv = document.getElementById("aiResult");
+        resultDiv.innerHTML = "";
+
+        let advice = "No specific matches found. Consult a doctor for guidance.";
+        const rules = [
+            { keywords: ["lump", "swelling"], text: "Possible breast cancer risk. Advice: Mammogram recommended." },
+            { keywords: ["cough", "breathlessness"], text: "Possible lung cancer risk. Advice: Consult doctor for CT scan." },
+            { keywords: ["fatigue", "weight loss"], text: "General cancer indicator. Advice: Blood tests recommended." },
+            { keywords: ["pain", "bleeding"], text: "Possible colon/liver cancer. Advice: Colonoscopy or liver scan advised." },
+            { keywords: ["skin change", "mole"], text: "Possible skin cancer. Advice: Dermatologist visit." },
+            { keywords: ["urination issues", "blood in urine"], text: "Possible prostate cancer. Advice: PSA test for men over 50." },
+            { keywords: ["jaundice", "abdominal pain"], text: "Possible liver cancer. Advice: Liver function tests and vaccination." }
+        ];
+
+        rules.some(rule => {
+            if (rule.keywords.some(k => symptoms.includes(k))) {
+                advice = rule.text;
+                return true;
+            }
+        });
+
+        resultDiv.innerHTML = `<p>${advice}</p><p><strong>Note:</strong> This is for awareness, not medical advice.</p>`;
+        showToast("AI advice generated!", 3000, "success");
+        aiForm.reset();
+    });
+}
+
+// ====== DONATIONS ======
+let totalDonations = 0;
+function makeDonation() {
+    const amount = parseInt(document.getElementById("donationAmount").value);
+    if (!amount || amount < 1000) return showToast("Minimum 1000 RWF required!", 2000, "error");
+
+    totalDonations += amount;
+    document.getElementById("donationStatus").innerText = `Total: RWF ${totalDonations}`;
+    const progress = Math.min((totalDonations / 1000000) * 100, 100);
+    document.getElementById("progressBar").style.width = `${progress}%`;
+    document.getElementById("donationAmount").value = "";
+    showToast("Thank you for your donation!", 2500, "success");
+}
+
+// ====== APPLICATION FORM ======
+function initApplyForm() {
+    const applyForm = document.getElementById("applyForm");
+    if (!applyForm) return;
+
+    applyForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const name = document.getElementById("name").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const needs = document.getElementById("needs").value.trim();
+
+        if (!name || !phone || !needs) return showToast("All fields are required!", 2000, "error");
+
+        document.getElementById("applyStatus").innerText = "Application submitted successfully!";
+        applyForm.reset();
+        showToast("Application sent!", 2000, "success");
+    });
+}
+
+// ====== PATIENT PORTAL ======
+function toggleTracker() {
+    const tracker = document.getElementById("patients");
+    if (!tracker) return;
+    tracker.style.display = tracker.style.display === "none" ? "block" : "none";
+    showToast(tracker.style.display === "block" ? "Tracker opened" : "Tracker closed");
+}
+
+function checkApplication() {
+    const phone = document.getElementById("portalPhone").value.trim();
+    if (!phone) return showToast("Please enter a phone number.", 2000, "error");
+    document.getElementById("portalResult").innerHTML = `<p>Application for ${phone}: Placeholder details</p>`;
+    showToast("Application checked!", 2000, "success");
+}
+
+function setReminder() {
+    const time = document.getElementById("reminderTime").value;
+    const name = document.getElementById("medicationName").value.trim();
+    if (!time || !name) return showToast("Both fields are required!", 2000, "error");
+
+    document.getElementById("reminderStatus").textContent = `Reminder set for ${time} - ${name}`;
+    showToast("Medication reminder set!", 2000, "success");
+}
+
+// ====== ADMIN LOGIN ======
+function adminLogin() {
+    const passwordInput = document.getElementById("adminPassword").value;
+    const adminPanel = document.getElementById("adminPanel");
+    const correctPassword = "MyHospital123";
+
+    if (passwordInput === correctPassword) {
+        adminPanel.style.display = "block";
+        showToast("Admin login successful!", 2500, "success");
+    } else {
+        adminPanel.style.display = "none";
+        showToast("Incorrect password.", 2500, "error");
+    }
+
+    document.getElementById("adminPassword").value = "";
+}
+
+// ====== CHEMO SCHEDULE MANAGER ======
+function initScheduleForm() {
+    const scheduleForm = document.getElementById("scheduleForm");
+    if (!scheduleForm) return;
+
+    scheduleForm.addEventListener("submit", e => {
+        e.preventDefault();
+
+        const patientName = document.getElementById("patientName").value.trim();
+        const chemoDate = document.getElementById("chemoDate").value;
+
+        if (!patientName || !chemoDate) return showToast("Please fill in all fields!", 2000, "error");
+
+        const scheduleList = document.getElementById("scheduleList");
+        const li = document.createElement("li");
+        li.className = "schedule-item";
+        li.innerHTML = `
+            <strong>Patient:</strong> ${patientName} <br>
+            <strong>Date:</strong> ${chemoDate}
+            <button class="delete-btn">Delete</button>
+        `;
+
+        li.querySelector(".delete-btn").addEventListener("click", () => li.remove());
+        scheduleList.appendChild(li);
+        scheduleForm.reset();
+        showToast("Schedule added!", 2000, "success");
+    });
+}
+
+// ====== RESOURCE SEARCH ======
+function initResourceSearch() {
+    const searchInput = document.getElementById("resourceSearch");
+    if (!searchInput) return;
+
+    searchInput.addEventListener("input", () => {
+        const query = searchInput.value.toLowerCase();
+        const cards = document.querySelectorAll(".resource-card");
+        cards.forEach(card => {
+            const title = card.querySelector("h3").textContent.toLowerCase();
+            card.style.display = title.includes(query) ? "block" : "none";
+        });
+    });
+}
+
+// ====== INITIALIZE EVERYTHING ======
+document.addEventListener("DOMContentLoaded", () => {
+    showToast("Welcome to Francine for Hope – Let's Fight Cancer Together!", 3000, "success");
+
+    const heroElement = document.querySelector(".hero h2");
+    if (heroElement) typeText(heroElement, "Building a Future of Hope");
+    initFadeInSections();
+    initMobileMenu();
+    initAIScreening();      
+    initApplyForm();
+    initScheduleForm();
+    initResourceSearch();
+});
