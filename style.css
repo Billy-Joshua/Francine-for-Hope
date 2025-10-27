@@ -92,7 +92,7 @@ body {
 .hero {
   position: relative;
   height: 100vh;
-  background: url('images/apply-support-image.jpg') center/cover no-repeat fixed; /* Parallax effect */
+  background: url('images/portrait-african-american-man-with-blue-ribbon.jpg') center/cover no-repeat fixed; /* Parallax effect */
   display: flex;
   align-items: center;
   justify-content: center;
