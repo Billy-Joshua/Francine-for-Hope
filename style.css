@@ -1,93 +1,137 @@
 /* Modern Black/Gray Design with Eye-Catching Animations and Bold Buttons */
-
-body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #0D0D0D; /* Deep black */
-  color: #D3D3D3; /* Light gray text */
-  line-height: 1.6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
+/* --- Refined Header Layout --- */
 .header {
-  background: linear-gradient(135deg, #1A1A1A, #0D0D0D); /* Dynamic gradient */
+  background-color: #1a1a1a;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
-  position: fixed;
-  width: 100%;
+  padding: 1rem 2.5rem;
+  position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.7); /* Stronger shadow */
-  transition: background 0.3s;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid #00e5ff33;
 }
 
 .logo {
-  font-size: 32px;
-  font-weight: 900;
-  color: #A9A9A9; /* Medium gray */
-  text-shadow: 0 0 10px #4D4D4D; /* Subtle glow */
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #00e5ff;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
 }
 
+.logo:hover {
+  text-shadow: 0 0 12px #00e5ff;
+}
+
+/* Navigation */
 .navbar ul {
-  display: flex;
-  margin: 0;
-  padding: 0;
   list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
 }
 
-.navbar ul li a {
-  color: #D3D3D3;
-  text-decoration: none;
-  padding: 15px 25px;
+.navbar a {
+  color: #d3d3d3;
   font-weight: 500;
-  transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
+  transition: 0.3s;
+  position: relative;
 }
 
-.navbar ul li a:hover {
-  color: #B0B0B0; /* Lighter gray hover */
-  transform: scale(1.1);
-  text-shadow: 0 0 15px #666666; /* Glow effect */
+.navbar a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #00e5ff;
+  transition: 0.3s;
 }
 
-.get-started, .ai-feature {
-  background: linear-gradient(45deg, #4D4D4D, #333333); /* Bold gradient */
-  border: 2px solid #666666; /* Glowing border */
-  color: #F0F0F0; /* Brighter text */
-  padding: 15px 30px;
-  font-size: 18px;
-  font-weight: 700;
-  border-radius: 30px;
+.navbar a:hover::after {
+  width: 100%;
+}
+
+.navbar a:hover {
+  color: #00e5ff;
+}
+
+/* Header Buttons */
+.header-buttons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.ai-feature, .get-started {
+  background: linear-gradient(45deg, #00e5ff, #0077ff);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 0.6rem 1.3rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.4s ease;
-  box-shadow: 0 0 10px rgba(77,77,77,0.8), inset 0 0 5px rgba(255,255,255,0.1); /* Inner glow */
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
 }
 
-.get-started:hover, .ai-feature:hover {
-  background: linear-gradient(45deg, #666666, #4D4D4D);
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(128,128,128,0.9), inset 0 0 10px rgba(255,255,255,0.2); /* Enhanced glow */
-  color: #FFFFFF;
+.ai-feature:hover, .get-started:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.7);
 }
 
+/* Mobile Menu */
 .menu-toggle {
   display: none;
   flex-direction: column;
   cursor: pointer;
+  gap: 5px;
 }
 
 .menu-toggle span {
-  height: 4px;
-  width: 30px;
-  background: #D3D3D3;
-  margin: 5px 0;
-  transition: 0.4s;
-  border-radius: 2px;
+  width: 25px;
+  height: 3px;
+  background-color: #00e5ff;
+  border-radius: 3px;
+  transition: all 0.3s ease;
 }
+
+@media (max-width: 1024px) {
+  .navbar ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #111;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .navbar.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .header-buttons {
+    display: none;
+  }
+}
+
 
 .hero {
   position: relative;
