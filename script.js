@@ -249,6 +249,152 @@ document.getElementById("scheduleForm").addEventListener("submit", function(e) {
     document.getElementById("scheduleForm").reset();
 });
 
+// ===== Resource Search Functionality =====
+// --------- Toast Notification ---------
+function showToast(msg, duration = 3000, type = "info") {
+    const toast = document.createElement("div");
+    toast.className = `toast ${type}`;
+    toast.innerText = msg;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), duration);
+}
+
+// --------- Patient Tracker Toggle ---------
+function toggleTracker() {
+    const tracker = document.getElementById("patients");
+    tracker.style.display = tracker.style.display === "block" ? "none" : "block";
+    showToast(tracker.style.display === "block" ? "Tracker Opened" : "Tracker Closed", 2000, "success");
+}
+
+// --------- Check Application ---------
+function checkApplication() {
+    const phone = document.getElementById("portalPhone").value.trim();
+    if (!phone) return showToast("Enter phone number!", 2000, "error");
+    document.getElementById("portalResult").innerHTML = `<p>Application for ${phone}: Sample details here.</p>`;
+    showToast("Application checked!", 2000, "success");
+}
+
+// --------- Medication Reminder ---------
+function setReminder() {
+    const time = document.getElementById("reminderTime").value;
+    const name = document.getElementById("medicationName").value.trim();
+    if (!time || !name) return showToast("Fill all fields!", 2000, "error");
+    document.getElementById("reminderStatus").textContent = `Reminder set: ${time} - ${name}`;
+    showToast("Reminder set!", 2000, "success");
+}
+
+// --------- Patient Tracker Logic ---------
+let patients = [];
+
+function renderPatients(list) {
+    const container = document.getElementById("patientList");
+    container.innerHTML = "";
+    list.forEach((p, index) => {
+        const div = document.createElement("div");
+        div.className = "patient-card";
+        div.innerHTML = `
+            <p><strong>Name:</strong> ${p.name}</p>
+            <p><strong>Age:</strong> ${p.age}</p>
+            <p><strong>Diagnosis:</strong> ${p.diagnosis}</p>
+            <p><strong>Stage:</strong> ${p.stage}</p>
+            <p><strong>Risk:</strong> ${p.risk}</p>
+            <p><strong>Notes:</strong> ${p.notes}</p>
+            <button onclick="deletePatient(${index})">Delete</button>
+        `;
+        container.appendChild(div);
+    });
+}
+
+// Add patient
+document.getElementById("patientForm")?.addEventListener("submit", e => {
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const age = document.getElementById("age").value;
+    const diagnosis = document.getElementById("diagnosis").value.trim();
+    const stage = document.getElementById("stage").value.trim();
+    const risk = document.getElementById("risk").value;
+    const notes = document.getElementById("notes").value.trim();
+
+    if(!name) return showToast("Patient name required", 2000, "error");
+
+    patients.push({name, age, diagnosis, stage, risk, notes});
+    renderPatients(patients);
+    e.target.reset();
+    showToast("Patient added!", 2000, "success");
+});
+
+// Delete patient
+function deletePatient(index) {
+    patients.splice(index,1);
+    renderPatients(patients);
+    showToast("Patient deleted", 2000, "success");
+}
+
+// Filter/Search/Sort
+document.getElementById("searchName")?.addEventListener("input", e => {
+    const query = e.target.value.toLowerCase();
+    renderPatients(patients.filter(p => p.name.toLowerCase().includes(query)));
+});
+
+document.getElementById("filterRisk")?.addEventListener("change", e => {
+    const value = e.target.value;
+    renderPatients(value ? patients.filter(p => p.risk===value) : patients);
+});
+
+document.getElementById("sortBy")?.addEventListener("change", e => {
+    const val = e.target.value;
+    let sorted = [...patients];
+    if(val==="ageAsc") sorted.sort((a,b)=>a.age-b.age);
+    else if(val==="ageDesc") sorted.sort((a,b)=>b.age-a.age);
+    else if(val==="nameAsc") sorted.sort((a,b)=>a.name.localeCompare(b.name));
+    else if(val==="nameDesc") sorted.sort((a,b)=>b.name.localeCompare(a.name));
+    renderPatients(sorted);
+});
+
+// Seed sample patients
+document.getElementById("seed")?.addEventListener("click", ()=>{
+    patients = [
+        {name:"Alice", age:34, diagnosis:"Breast Cancer", stage:"2", risk:"Moderate", notes:"Undergoing chemo"},
+        {name:"Bob", age:45, diagnosis:"Lung Cancer", stage:"3", risk:"High", notes:"Needs oxygen"},
+        {name:"Celine", age:28, diagnosis:"Skin Cancer", stage:"1", risk:"Low", notes:"Under observation"}
+    ];
+    renderPatients(patients);
+    showToast("Sample patients loaded!", 2000, "success");
+});
+
+// Clear all patients
+document.getElementById("clearAll")?.addEventListener("click", ()=>{
+    patients = [];
+    renderPatients(patients);
+    showToast("All patients cleared!", 2000, "success");
+});
+
+// Export JSON
+document.getElementById("exportBtn")?.addEventListener("click", ()=>{
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(patients));
+    const dlAnchor = document.createElement('a');
+    dlAnchor.setAttribute("href", dataStr);
+    dlAnchor.setAttribute("download","patients.json");
+    dlAnchor.click();
+    showToast("Exported patients!",2000,"success");
+});
+
+// Import JSON
+document.getElementById("importBtn")?.addEventListener("click", ()=>{
+    document.getElementById("importJSON").click();
+});
+
+document.getElementById("importJSON")?.addEventListener("change", (e)=>{
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = (event)=>{
+        patients = JSON.parse(event.target.result);
+        renderPatients(patients);
+        showToast("Patients imported!",2000,"success");
+    };
+    reader.readAsText(file);
+});
 
 
 

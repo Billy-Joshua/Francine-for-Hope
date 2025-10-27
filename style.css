@@ -1243,6 +1243,155 @@ footer button:hover {
     font-size: 14px;
   }
 }
+/* ===== Patient Portal Professional Dark Theme ===== */
+.portal {
+    padding: 60px 20px;
+    background-color: #0D0D0D; /* Main dark background */
+    color: #E0E0E0; /* Slightly brighter gray for text */
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.3s ease;
+}
+
+/* Section Header */
+.portal h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #FFFFFF;
+}
+
+.portal p {
+    font-size: 1.1rem;
+    color: #B0B0B0;
+    margin-bottom: 25px;
+}
+
+/* Inputs and Textareas */
+.portal input[type="text"],
+.portal input[type="time"],
+.portal select,
+.portal textarea {
+    display: block;
+    width: 100%;
+    max-width: 450px;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    border: 1px solid #333;
+    border-radius: 12px;
+    background-color: #1C1C1C;
+    color: #E0E0E0;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.portal input:focus,
+.portal select:focus,
+.portal textarea:focus {
+    outline: none;
+    border-color: #FF4B5C;
+    box-shadow: 0 0 10px rgba(255, 75, 92, 0.5);
+}
+
+/* Buttons */
+.portal button {
+    background-color: #FF4B5C;
+    color: #fff;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.portal button:hover {
+    background-color: #E03B4A;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
+
+/* Result & Status */
+#portalResult, #reminderStatus {
+    margin-top: 15px;
+    font-weight: 600;
+    color: #FFD700; /* Gold for emphasis */
+    background-color: #1A1A1A;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+/* Medication Section */
+.medication-section {
+    background-color: #1A1A1A;
+    padding: 25px 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+    margin-top: 30px;
+}
+
+/* Patient Tracker Section */
+#patients {
+    margin-top: 30px;
+    padding: 25px 20px;
+    background-color: #1A1A1A;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+}
+
+/* Controls Styling */
+#patients .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#patients .controls button,
+#patients .controls input,
+#patients .controls select {
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #FF4B5C;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+#patients .controls button:hover,
+#patients .controls input:hover,
+#patients .controls select:hover {
+    background-color: #E03B4A;
+    transform: translateY(-2px);
+}
+
+/* Patient Cards */
+.patient-card {
+    background: #1C1C1C;
+    border: 1px solid #333;
+    padding: 18px;
+    margin-bottom: 12px;
+    border-radius: 15px;
+    color: #E0E0E0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.patient-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+
+.patient-card p {
+    margin: 5px 0;
+}
+
+.toast.success { background-color: #4CAF50; color: #fff; }
+.toast.error { background-color: #f44336; color: #fff; }
+
 
 
 
