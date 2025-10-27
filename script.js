@@ -196,6 +196,58 @@ const navbar = document.getElementById("navbar");
 menuToggle.addEventListener("click", () => {
   navbar.classList.toggle("active");
 });
+// ===== Admin Login Function =====
+function adminLogin() {
+    const passwordInput = document.getElementById("adminPassword").value;
+    const adminPanel = document.getElementById("adminPanel");
+    
+    // Replace 'securePassword123' with your real secure password
+    const correctPassword = "MyHospital123";
+
+    if (passwordInput === correctPassword) {
+        alert("Login successful! Welcome.");
+        adminPanel.style.display = "block";
+    } else {
+        alert("Incorrect password. Try again.");
+        adminPanel.style.display = "none";
+    }
+
+    // Clear password field
+    document.getElementById("adminPassword").value = "";
+}
+
+// ===== Schedule Form Functionality =====
+document.getElementById("scheduleForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // Prevent form submission reload
+
+    const patientName = document.getElementById("patientName").value.trim();
+    const chemoDate = document.getElementById("chemoDate").value;
+
+    if (patientName === "" || chemoDate === "") {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    // Create a new list item for the schedule
+    const scheduleList = document.getElementById("scheduleList");
+    const li = document.createElement("li");
+    li.className = "schedule-item";
+    li.innerHTML = `
+        <strong>Patient:</strong> ${patientName} <br>
+        <strong>Date:</strong> ${chemoDate} 
+        <button class="delete-btn">Delete</button>
+    `;
+
+    // Add delete functionality
+    li.querySelector(".delete-btn").addEventListener("click", () => {
+        li.remove();
+    });
+
+    scheduleList.appendChild(li);
+
+    // Clear form
+    document.getElementById("scheduleForm").reset();
+});
 
 
 

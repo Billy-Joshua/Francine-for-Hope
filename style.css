@@ -813,5 +813,147 @@ footer button:hover {
 .global-note strong {
   color: #00B4DB;
 }
+/* Hospital Section */
+.hospital {
+  background-color: #0d0d0d; /* Dark theme */
+  color: #f0f0f0;
+  padding: 50px 20px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.hospital .section-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.hospital .section-header p {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+/* Image Styling */
+.hospital .hospital-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.hospital .section-image {
+  width: 100%;
+  max-width: 700px; /* Controls the max width */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  object-fit: cover;
+}
+
+/* Admin Login Styling */
+.admin-login {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+}
+
+.admin-login input {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+.admin-login button {
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #ff4b2b;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.admin-login button:hover {
+  background-color: #ff3a1a;
+}
+
+/* Admin Panel Styling */
+.admin-panel {
+  display: none;
+  margin-top: 40px;
+  background-color: #1a1a1a;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.admin-panel h3 {
+  margin-bottom: 20px;
+  color: #ff4b2b;
+}
+
+.admin-panel form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.admin-panel input {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+.admin-panel button {
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #ff4b2b;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.admin-panel button:hover {
+  background-color: #ff3a1a;
+}
+
+#scheduleList {
+  margin-top: 20px;
+  list-style-type: none;
+  padding: 0;
+  color: #ccc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hospital .hospital-content {
+    flex-direction: column;
+  }
+}
+
+.about .section-image {
+  width: 100%;
+  max-width: 1000px;       /* max width so it doesn’t get too wide on big screens */
+  max-height: 500px;       /* max height for large screens */
+  height: auto;            /* let the height adjust automatically */
+  object-fit: cover;       /* crop proportionally */
+  border-radius: 12px;
+  display: block;
+  margin: 20px auto;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+
 
  

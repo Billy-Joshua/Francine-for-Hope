@@ -235,28 +235,39 @@
     </div>
   </section>
 
-  <!-- Hospital/Admin Portal -->
-  <section id="hospital" class="hospital">
-    <div class="section-header">
-      <h2>Hospital / Admin Portal</h2>
-      <p>For staff at Butaro and Rwanda Cancer Centers.</p>
-    </div>
+<!-- Hospital/Admin Portal -->
+<section id="hospital" class="hospital">
+  <div class="section-header">
+    <h2>Hospital / Admin Portal</h2>
+    <p>For staff at Butaro and Rwanda Cancer Centers.</p>
+  </div>
+
+  <div class="hospital-content">
     <img src="images/hospital-image.jpg" alt="Hospital Staff" class="section-image">
-    <label for="adminPassword">Password:</label>
-    <input type="password" id="adminPassword">
-    <button onclick="adminLogin()">Login</button>
-    <div id="adminPanel" style="display:none;">
-      <h3>Chemo Schedule Manager</h3>
-      <form id="scheduleForm">
-        <label for="patientName">Patient Name:</label>
-        <input type="text" id="patientName" required>
-        <label for="chemoDate">Chemotherapy Date:</label>
-        <input type="date" id="chemoDate" required>
-        <button type="submit">Add Schedule</button>
-      </form>
-      <ul id="scheduleList"></ul>
+
+    <div class="admin-login">
+      <label for="adminPassword">Password:</label>
+      <input type="password" id="adminPassword" placeholder="Enter admin password">
+      <button onclick="adminLogin()">Login</button>
     </div>
-  </section>
+  </div>
+
+  <div id="adminPanel" class="admin-panel">
+    <h3>Chemo Schedule Manager</h3>
+    <form id="scheduleForm">
+      <label for="patientName">Patient Name:</label>
+      <input type="text" id="patientName" required placeholder="John Doe">
+
+      <label for="chemoDate">Chemotherapy Date:</label>
+      <input type="date" id="chemoDate" required>
+
+      <button type="submit">Add Schedule</button>
+    </form>
+
+    <ul id="scheduleList"></ul>
+  </div>
+</section>
+
 
   <!-- Patient Tracker -->
   <section id="patients" class="patient-tracker" style="display: none;">
