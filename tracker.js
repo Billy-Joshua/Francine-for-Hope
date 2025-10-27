@@ -143,9 +143,8 @@ document.addEventListener("DOMContentLoaded", () => {
         input.value = "";
     };
 
-    // =============================================================
-    // 📋 APPLICATION FORM HANDLER
-    // =============================================================
+ // 📋 APPLICATION FORM HANDLER
+
     const applyForm = document.getElementById("applyForm");
     if (applyForm) {
         applyForm.addEventListener("submit", e => {
