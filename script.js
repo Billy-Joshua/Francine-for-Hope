@@ -396,7 +396,87 @@ document.getElementById("importJSON")?.addEventListener("change", (e)=>{
     reader.readAsText(file);
 });
 
+// ===== Donate Section JS =====
+let totalDonations = 0;
+const goalAmount = 1000000; // 1,000,000 RWF goal
 
+function makeDonation() {
+    const donationInput = document.getElementById("donationAmount");
+    const amount = parseInt(donationInput.value);
 
+    if (!amount || amount < 1000) {
+        showToast("Minimum donation is 1000 RWF");
+        return;
+    }
 
- 
+    // Update total donations
+    totalDonations += amount;
+
+    // Update progress bar
+    const progress = Math.min((totalDonations / goalAmount) * 100, 100);
+    document.getElementById("progressBar").style.width = progress + "%";
+
+    // Update donation status
+    document.getElementById("donationStatus").innerText = `Total Raised: RWF ${totalDonations.toLocaleString()}`;
+
+    // Reset input
+    donationInput.value = "";
+
+    // AI-style suggestion & appreciation
+    aiDonationFeedback(amount);
+
+    // Show toast notification
+    showToast("Thank you for your donation!");
+}
+
+// ===== AI-Style Feedback Function =====
+function aiDonationFeedback(amount) {
+    const feedbackMessages = [];
+
+    if (amount < 5000) {
+        feedbackMessages.push("Every contribution counts! Small steps lead to big impact.");
+    }
+    if (amount >= 5000 && amount < 20000) {
+        feedbackMessages.push("Amazing! Your donation can provide meals and transport for a patient.");
+    }
+    if (amount >= 20000 && amount < 50000) {
+        feedbackMessages.push("Incredible! You're making a significant impact on cancer care in Rwanda.");
+    }
+    if (amount >= 50000) {
+        feedbackMessages.push("Wow! Your generosity can save multiple lives and support treatments.");
+    }
+
+    // Random AI-style encouragement
+    const encouragements = [
+        "💛 Hope grows with your help.",
+        "🌟 You are a hero to someone today.",
+        "🙌 Together, we can fight cancer.",
+        "🎯 Every RWF moves us closer to a cancer-free future."
+    ];
+
+    // Combine feedback
+    const randomEncourage = encouragements[Math.floor(Math.random() * encouragements.length)];
+    const combinedMessage = feedbackMessages[Math.floor(Math.random() * feedbackMessages.length)] + " " + randomEncourage;
+
+    // Display in small AI-box under donation
+    let aiBox = document.getElementById("donationAIResult");
+    if (!aiBox) {
+        aiBox = document.createElement("p");
+        aiBox.id = "donationAIResult";
+        aiBox.style.marginTop = "15px";
+        aiBox.style.fontStyle = "italic";
+        aiBox.style.color = "#FFD700";
+        document.querySelector(".donation-form").appendChild(aiBox);
+    }
+    aiBox.innerText = combinedMessage;
+}
+
+// ===== Toast Function (small & sleek) =====
+function showToast(message) {
+    const toast = document.createElement("div");
+    toast.className = "toast-mini";
+    toast.innerText = message;
+    document.body.appendChild(toast);
+
+    setTimeout(() => toast.remove(), 2000);
+}
